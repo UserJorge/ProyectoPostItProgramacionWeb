@@ -1,20 +1,23 @@
-﻿
-@font-face 
+﻿@font-face 
 {
     font-family: CursiveNote;
     src: url(../fonts/DancingScript-VariableFont_wght.ttf);
 }
-*{
+*
+{
+
      margin:0px 0px 0px 0px;
      padding:0px 0px 0px 0px;
 }
-i{
+ul i
+{
     color:white;
 }
+
 header
 {
     display:flex;
-    align-content:space-between;  
+   justify-content:space-between;
     height:12vh;
     width:100vw;
     background-color:cornflowerblue;
@@ -54,18 +57,39 @@ header ul li a
  text-align: center;
  line-height: 12vh;
 }
-main {
+main 
+{
     display: flex;  
     flex-wrap:wrap;
     flex-direction:row;
-    height: 88vh;
+    height: 83vh;
     width: 100vw;
 }
-.contenedorNota{
+.contenedorNota
+{
     background-color:lightyellow;
     width:25vw;
-    height:44vh;
+    height:41.5vh;
 }
-.contenedorNota:hover {
+.contenedorNota:hover 
+{
     background-color: yellow;
+}
+.contenedorNota i
+{
+    color:black;
+    font-size:10vw;
+}
+footer
+{
+    height:5vh;
+    text-align:center;
+}
+@media only screen and (orientation:Portrait) {
+    .contenedorNota 
+    {
+        width: 100vw;
+        height: 41.5vh;
+    }
+
 }
