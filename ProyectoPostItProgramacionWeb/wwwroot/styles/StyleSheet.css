@@ -1,71 +1,104 @@
 ﻿
-@font-face 
-{
-    font-family: CursiveNote;
+@font-face {
+    font-family: CursiveNote /*arial, sans-serif*/;
     src: url(../fonts/DancingScript-VariableFont_wght.ttf);
 }
-*{
-     margin:0px 0px 0px 0px;
-     padding:0px 0px 0px 0px;
+
+* {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
 }
-i{
-    color:white;
+
+i {
+    color: white;
 }
-header
-{
-    display:flex;
-    align-content:space-between;  
-    height:12vh;
-    width:100vw;
-    background-color:cornflowerblue;
+
+header {
+    display: flex;
+    align-content: space-between;
+    height: 12vh;
+    width: 100vw;
+    background-color: cornflowerblue;
 }
-header h1
-{
-  text-align:center;
-  background-color:red;
-  font-family:CursiveNote;
-  font-size:6vw;
-  color:white;
-  width:25vw;
-  height:12vh;
-  line-height:12vh;
-}
-header ul 
-{
-  display:flex;
-  flex-wrap:wrap;
-  align-content:center;
-  list-style-type:none;
-}
-header ul li
-{
-   width:15vw;
-   text-align:center;
-   list-style:none;
-}
-header ul li:hover
-{
- background-color:deepskyblue;
-}
-header ul li a 
-{
- color: white;
- font-family: CursiveNote;
- text-align: center;
- line-height: 12vh;
-}
-main {
-    display: flex;  
-    flex-wrap:wrap;
-    flex-direction:row;
+
+    header h1 { /* /Este es el titulo Post It-->  */
+        text-align: center;
+        background-color: red;
+        font-family: CursiveNote;
+        font-size: 6vw;
+        color: white;
+        width: 25vw;
+        height: 12vh;
+        line-height: 12vh;
+        /* Firefox */
+        -moz-box-shadow: 5px 5px 7px rgba(33,33,33,1);
+        /* Safari+Chrome */
+        -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+        /* Opera */
+        box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    }
+
+    header ul /*Este es el apartado de nueva nota, notas recientes, iniciar sesion, cerrar sesion*/ {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        list-style-type: none;
+        margin: 5px;
+    }
+
+        header ul li /*Apartado de adentro*/ {
+            width: 15vw;
+            text-align: center;
+            list-style: none;
+        }
+
+            header ul li:hover {
+                background-color: deepskyblue;
+            }
+
+            header ul li a {
+                color: white;
+                font-family: CursiveNote;
+                text-align: center;
+                line-height: 12vh;
+                margin: auto;
+            }
+
+main { /*Notas*/
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     height: 88vh;
     width: 100vw;
+    text-align: center;
 }
-.contenedorNota{
-    background-color:lightyellow;
-    width:25vw;
-    height:44vh;
+
+.contenedorNota/*:nth-child(even)*/ {
+
+    text-decoration: none;
+    background-color: lightgoldenrodyellow;
+    width: 25vw;
+    height: 44vh;
+    margin: 10px;
+    padding: 1em;
+    display: block;
+    /* Firefox */
+    -moz-box-shadow: 5px 5px 7px rgba(33,33,33,1);
+    /* Safari+Chrome */
+    -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    /* Opera */
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+   
+    /*-o-transform: rotate(4deg);
+    -webkit-transform: rotate(4deg);
+    -moz-transform: rotate(4deg);
+    position: relative;
+    top: 5px;
+        */
+
+
 }
+
 .contenedorNota:hover {
     background-color: yellow;
 }
