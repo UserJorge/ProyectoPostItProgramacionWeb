@@ -12,5 +12,19 @@ namespace ProyectoPostItProgramacionWeb.Controllers
         {
             return View();
         }
+
+        public IActionResult AgregarNota()
+        {
+            return View();
+        }
+        public IActionResult EditarNota()
+        {
+            return View();
+        }
+        public IActionResult EliminarNota()
+        {
+            return View();
+        }
     }
 }
+
