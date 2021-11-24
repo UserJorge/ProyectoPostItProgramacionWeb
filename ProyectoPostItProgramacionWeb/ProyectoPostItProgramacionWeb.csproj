@@ -7,10 +7,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Areas\" />
-    <Folder Include="Views\Home\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="wwwroot\fonts\" />
-    <Folder Include="wwwroot\styles\" />
   </ItemGroup>
 
   <ItemGroup>

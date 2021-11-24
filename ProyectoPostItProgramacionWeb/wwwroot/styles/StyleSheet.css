@@ -1,0 +1,71 @@
+﻿
+@font-face 
+{
+    font-family: CursiveNote;
+    src: url(../fonts/DancingScript-VariableFont_wght.ttf);
+}
+*{
+     margin:0px 0px 0px 0px;
+     padding:0px 0px 0px 0px;
+}
+i{
+    color:white;
+}
+header
+{
+    display:flex;
+    align-content:space-between;  
+    height:12vh;
+    width:100vw;
+    background-color:cornflowerblue;
+}
+header h1
+{
+  text-align:center;
+  background-color:red;
+  font-family:CursiveNote;
+  font-size:6vw;
+  color:white;
+  width:25vw;
+  height:12vh;
+  line-height:12vh;
+}
+header ul 
+{
+  display:flex;
+  flex-wrap:wrap;
+  align-content:center;
+  list-style-type:none;
+}
+header ul li
+{
+   width:15vw;
+   text-align:center;
+   list-style:none;
+}
+header ul li:hover
+{
+ background-color:deepskyblue;
+}
+header ul li a 
+{
+ color: white;
+ font-family: CursiveNote;
+ text-align: center;
+ line-height: 12vh;
+}
+main {
+    display: flex;  
+    flex-wrap:wrap;
+    flex-direction:row;
+    height: 88vh;
+    width: 100vw;
+}
+.contenedorNota{
+    background-color:lightyellow;
+    width:25vw;
+    height:44vh;
+}
+.contenedorNota:hover {
+    background-color: yellow;
+}
