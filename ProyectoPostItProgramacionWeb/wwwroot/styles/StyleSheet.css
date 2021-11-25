@@ -71,6 +71,7 @@ main
 { /*Notas*/
     display: flex;
     flex-wrap: wrap;
+    justify-content:center;
     flex-direction: row;
     height: 88vh;
     width: 100vw;
@@ -101,4 +102,13 @@ main
 .contenedorNota:hover 
 {
     background-color: lightgoldenrodyellow;
+}
+.TituloFormulario{
+    font-family:CursiveNote;
+    font-size:xx-large;
+}
+.FormularioGeneral{
+    background-color:lightgoldenrodyellow;
+    height:88vh;
+    width:100vw;
 }
