@@ -33,7 +33,8 @@ namespace ProyectoPostItProgramacionWeb
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
-                endpoints.MapControllerRoute(name: "default", pattern: "{controller=NotasController}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(name: "default", pattern: "{controller=Notas}/{action=Index}/{id?}");
+             
              
             });
           

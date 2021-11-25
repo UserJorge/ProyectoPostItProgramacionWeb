@@ -1,5 +1,6 @@
 ﻿
-@font-face {
+@font-face 
+{
     font-family: CursiveNote /*arial, sans-serif*/;
     font-family: CursiveNote;
     src: url(../fonts/DancingScript-VariableFont_wght.ttf);
@@ -8,11 +9,9 @@
 {
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
 }
 i
 {
-    color: white;
     color: white;
 }
 header
@@ -22,56 +21,57 @@ header
     height: 12vh;
     width: 100vw;
     background-color: cornflowerblue;
-    background-color: cornflowerblue;
 }
-    header h1 { /* /Este es el titulo Post It-->  */
-        text-align: center;
-        background-color: red;
-        font-family: CursiveNote;
-        font-size: 6vw;
-        color: white;
-        width: 25vw;
-        height: 12vh;
-        line-height: 12vh;
-        /* Firefox */
-        -moz-box-shadow: 5px 5px 7px rgba(33,33,33,1);
-        /* Safari+Chrome */
-        -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-        /* Opera */
-        box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-    }
+header h1 
+{ /* /Este es el titulo Post It-->  */
+    text-align: center;
+    background-color: red;
+    font-family: CursiveNote;
+    font-size: 6vw;
+    color: white;
+    width: 20vw;
+    height: 12vh;
+    line-height: 12vh;
+    /* Firefox */
+    -moz-box-shadow: 5px 5px 7px rgba(33,33,33,1);
+    /* Safari+Chrome */
+    -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    /* Opera */
+     box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+}
+header ul /*Este es el apartado de nueva nota, notas recientes, iniciar sesion, cerrar sesion*/ 
+{
+     display: flex;
+     flex-wrap: wrap;
+     align-content: center;
+     list-style-type: none;
+     margin: 5px;
+}
+header ul li /*Apartado de adentro*/ 
+{
+     width: 10vw;
+     text-align: center;
+     list-style: none;
+}
+header ul li:hover 
+{
+     background-color: deepskyblue;
+}
+header ul li a 
+{
+     color: white;
+     font-family: CursiveNote;
+     font-size:large;
+     text-align: center;
+     line-height: 12vh;
+     margin: auto;
+}
 
-    header ul /*Este es el apartado de nueva nota, notas recientes, iniciar sesion, cerrar sesion*/ {
-        display: flex;
-        flex-wrap: wrap;
-        align-content: center;
-        list-style-type: none;
-        margin: 5px;
-    }
-
-        header ul li /*Apartado de adentro*/ {
-            width: 15vw;
-            text-align: center;
-            list-style: none;
-        }
-
-            header ul li:hover {
-                background-color: deepskyblue;
-            }
-
-            header ul li a {
-                color: white;
-                font-family: CursiveNote;
-                text-align: center;
-                line-height: 12vh;
-                margin: auto;
-            }
-
-main { /*Notas*/
+main 
+{ /*Notas*/
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    height: 88vh;
     height: 88vh;
     width: 100vw;
     text-align: center;
@@ -96,10 +96,9 @@ main { /*Notas*/
     position: relative;
     top: 5px;
         */
-
-
     height: 44vh;
 }
-    .contenedorNota:hover {
-        background-color: lightgoldenrodyellow;
-    }
+.contenedorNota:hover 
+{
+    background-color: lightgoldenrodyellow;
+}
