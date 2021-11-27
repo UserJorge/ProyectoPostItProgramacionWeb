@@ -16,7 +16,7 @@ namespace ProyectoPostItProgramacionWeb.Controllers
         [HttpGet("Notas/Agregar/")]
         public IActionResult AgregarNota()
         {
-            return View();
+            return View();  
         }
         [HttpGet("Notas/Editar/")]
         public IActionResult EditarNota()

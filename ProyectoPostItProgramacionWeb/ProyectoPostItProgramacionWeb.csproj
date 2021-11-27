@@ -5,8 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Usuario\Models\" />
+    <Folder Include="Areas\Usuario\Controllers\" />
+    <Folder Include="Areas\Usuario\Views\" />
     <Folder Include="Models\" />
-    <Folder Include="Areas\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
 
