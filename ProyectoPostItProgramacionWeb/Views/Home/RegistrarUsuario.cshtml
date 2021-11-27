@@ -1,0 +1,19 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+
+<div class="FormularioGeneral">
+    <p class="TituloFormulario">Registrarse</p>
+    <form method="POST" action="~/Home/RegistrarUsuario">
+        <p>Nombre:</p>
+        <input type="text" name="Nombre" />
+        <p>Correo Electrónico</p>
+        <input type="text" name="CorreoElectronico" /><br />
+        <p>Contraseña</p>
+        <input type="password" name="Pass" /><br />
+        <p>Confirmar la contraseña</p>
+        <input type="password" name="Pass"/><br />
+        <input type="submit" />
+    </form>
+</div>

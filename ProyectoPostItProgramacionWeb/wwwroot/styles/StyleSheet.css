@@ -10,7 +10,7 @@
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
 }
-i
+header>i
 {
     color: white;
 }
@@ -111,6 +111,11 @@ main
 .contenedorNota:hover 
 {
     background-color: lightgoldenrodyellow;
+}
+.contenedorNota > i{
+    color:black;
+    background-color:black;
+    
 }
 .TituloFormulario{
     font-family:CursiveNote;

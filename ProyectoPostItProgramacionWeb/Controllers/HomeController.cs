@@ -12,5 +12,15 @@ namespace ProyectoPostItProgramacionWeb.Controllers
         {
             return View();
         }
+        
+        public IActionResult RegistrarUsuario()
+        {
+            return View();
+        }
+        public IActionResult IniciarSesionUsuario()
+        {
+            return View();
+        }
+
     }
 }
