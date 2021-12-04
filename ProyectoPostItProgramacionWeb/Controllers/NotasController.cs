@@ -25,7 +25,7 @@ namespace ProyectoPostItProgramacionWeb.Controllers
         [HttpGet("Notas/")]
         public IActionResult Index()
         {
-            var notas =(IEnumerable<Nota>)Context.Nota.Include(x => x.IdMazoNavigation).ThenInclude(x => x.IdUsuarioNavigation).Select(x => x.IdMazoNavigation.IdUsuario == 1 && x.IdMazo == 1).ToList();
+            var notas =(IEnumerable<Nota>)Context.Nota.Include(x => x.IdMazoNavigation).ThenInclude(x => x.IdUsuarioNavigation).Select(x => x).Where(x=>x.IdMazoNavigation.IdUsuario == 1 && x.IdMazo == 1).ToList();
             return View(notas);
         }
         [HttpGet("Notas/Agregar/")]
@@ -84,8 +84,34 @@ namespace ProyectoPostItProgramacionWeb.Controllers
         public IActionResult EditarNota(PostItViewModel vm)
         {          
             var nota = Context.Nota.FirstOrDefault(x => x.Titulo == vm.Nota.Titulo);
+            if (vm.Audio!=null)
+            {
+                if (!(vm.Audio.ContentType != "audio/mp3" || vm.Audio.ContentType != "audio/mpeg"))
+                {
+                    ModelState.AddModelError("", "El archivo no está en el formato M4A");
+                    View(vm);
+                }
+                if (vm.Audio.Length > 1024 * 1024 * 10)
+                {
+                    ModelState.AddModelError("", "El archivo no debe ser mayor a 10MB");
+                    View(vm);
+                }
+                string path = Host.WebRootPath + "/audios/" + $"{nota.Id}_Audio.mp3";
+                FileStream fs = new FileStream(path, FileMode.Create);
+                vm.Audio.CopyTo(fs);
+            }
             if (nota!=null)
             {
+                if (nota.Descripcion.Length>720)
+                {
+                    ModelState.AddModelError("", "La descripción es demasiado grande");
+                    View(nota);
+                }
+                if (nota.Descripcion.Length == 0)
+                {
+                    ModelState.AddModelError("", "La descripción es demasiado pequeña");
+                    View(nota);
+                }
                 nota.Descripcion = vm.Nota.Descripcion;
                 Context.Update(nota);
                 Context.SaveChanges();
@@ -111,6 +137,8 @@ namespace ProyectoPostItProgramacionWeb.Controllers
             var nota = Context.Nota.FirstOrDefault(x => x.Titulo == vm.Nota.Titulo);
             if (nota!=null)
             {
+                string path = Host.WebRootPath + "/audios/" + $"{nota.Id}_Audio.mp3";
+                System.IO.File.Delete(path);               
                 Context.Remove(nota);
                 Context.SaveChanges();
                 return RedirectToAction("Index");
