@@ -100,9 +100,9 @@ namespace ProyectoPostItProgramacionWeb.Controllers
             var nota = Context.Nota.FirstOrDefault(x => x.Titulo == id.Replace("-"," "));
             if (nota!=null)
             {
+                ModelState.AddModelError("", "La nota no se encontró o el título no coincide con los registros");
                 return RedirectToAction("Index");
-            }
-            ModelState.AddModelError("", "La nota no se encontró");
+            }          
             return View(nota);
         }
         [HttpPost("Notas/Eliminar/")]
