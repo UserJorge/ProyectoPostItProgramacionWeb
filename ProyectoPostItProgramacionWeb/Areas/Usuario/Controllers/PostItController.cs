@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProyectoPostItProgramacionWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,13 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
 {
     public class PostItController : Controller
     {
+        public postitdbContext Context { get; }
+
+        public PostItController(postitdbContext context)
+        {
+            Context = context;
+        }
+        
         [Route("Usuario/Index")]
         [Route("Usuario/")]
         [Route("Usuario/Home")]

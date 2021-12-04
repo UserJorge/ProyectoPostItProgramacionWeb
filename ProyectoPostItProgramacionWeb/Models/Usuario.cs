@@ -9,13 +9,13 @@ namespace ProyectoPostItProgramacionWeb.Models
     {
         public Usuario()
         {
-            Postit = new HashSet<Postit>();
+            Mazo = new HashSet<Mazo>();
         }
 
         public int Id { get; set; }
-        public string NombreUsuario { get; set; }
-        public string ClaveAcceso { get; set; }
+        public string Nombre { get; set; }
+        public string Password { get; set; }
 
-        public virtual ICollection<Postit> Postit { get; set; }
+        public virtual ICollection<Mazo> Mazo { get; set; }
     }
 }
