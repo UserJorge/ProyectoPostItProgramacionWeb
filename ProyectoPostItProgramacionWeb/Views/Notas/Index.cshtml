@@ -1,6 +1,24 @@
-﻿@{
+﻿@model IEnumerable<ProyectoPostItProgramacionWeb.Models.Nota>
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment env
+@{
     Layout = "_Layout";
 }
+@foreach (var nota in Model)
+{
+    <div class="contenedorNota">
+        <a href="~/Notas/Editar/@nota.Titulo.Replace(" ","-")"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
+        <a href="~/Notas/Eliminar/@nota.Titulo.Replace(" ","-")"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
+        <p class="tituloMazo" name="Titulo">@nota.Titulo</p>
+        <p class="contenidoNota" name="Contenido">
+            @nota.Descripcion
+        </p>
+        @if (System.IO.File.Exists($"{env.WebRootPath}/audios/{nota.Id}_Audio.mp3"))
+        {
+            <audio controls>
+                <source src="~/audios/@(nota.Id)_Audio.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+        }
 
-
-
+    </div>
+}
