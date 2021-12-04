@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
 {
+    [Area("Usuario")]
     public class PostItController : Controller
     {
         public postitdbContext Context { get; }

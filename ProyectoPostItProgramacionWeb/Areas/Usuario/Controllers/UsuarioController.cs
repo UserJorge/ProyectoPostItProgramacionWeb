@@ -12,5 +12,10 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
         {
             return View();
         }
+        [Route("Usuario/Salir")]
+        public IActionResult Logout()
+        {
+            return View();
+        }
     }
 }

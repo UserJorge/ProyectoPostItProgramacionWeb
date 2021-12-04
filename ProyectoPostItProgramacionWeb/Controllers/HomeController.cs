@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProyectoPostItProgramacionWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace ProyectoPostItProgramacionWeb.Controllers
@@ -22,12 +25,37 @@ namespace ProyectoPostItProgramacionWeb.Controllers
             return View(notas);
        
         }
-        
+        [HttpGet("Usuario/Registrarse")]
         public IActionResult RegistrarUsuario()
         {
             return View();
         }
         public IActionResult IniciarSesionUsuario()
+        {
+            return View();
+        }
+        [HttpPost("Usuario/Iniciar")]
+        public IActionResult IniciarSesionUsuario(string nombreusuario,string clave)
+        {
+            var usuario = Context.Usuario.SingleOrDefault(x => x.Nombre == nombreusuario && x.Password == clave);
+            if (usuario!=null)
+            {
+                List<Claim> claims = new List<Claim>();
+                claims.Add(new Claim(ClaimTypes.Name, usuario.Nombre));
+                claims.Add(new Claim("Id", User.Identity.ToString()));
+                var identidad = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                HttpContext.SignInAsync(new ClaimsPrincipal(identidad));
+                return RedirectToAction("Index", "Home", new { area = "Usuario" });
+            }
+            else
+            {
+                ModelState.AddModelError("", "El usuario o contraseña son incorrectos");
+               return View();
+            }
+         
+        }
+        [Route("Usuario/AccesoDenegado")]
+        public IActionResult AccesoDenegado()
         {
             return View();
         }
