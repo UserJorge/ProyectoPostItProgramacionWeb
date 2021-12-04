@@ -23,6 +23,9 @@ namespace ProyectoPostItProgramacionWeb.Controllers
             Host = env;
         }
         [HttpGet("Notas/")]
+        [HttpGet("Notas/Index")]
+        [HttpGet("Home/Index")]
+        [HttpGet("Home/")]
         public IActionResult Index()
         {
             var notas =(IEnumerable<Nota>)Context.Nota.Include(x => x.IdMazoNavigation).ThenInclude(x => x.IdUsuarioNavigation).Select(x => x).Where(x=>x.IdMazoNavigation.IdUsuario == 1 && x.IdMazo == 1).ToList();

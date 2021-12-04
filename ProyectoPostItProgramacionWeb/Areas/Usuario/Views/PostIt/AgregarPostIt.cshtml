@@ -1,17 +1,16 @@
-﻿
+﻿@model ProyectoPostItProgramacionWeb.ViewModels.PostItViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    ViewData["Title"] = "AgregarPostIt";
+    Layout = "_Layout";
 }
-
-<h1>AgregarPostIt</h1>
-
 <div class="FormularioGeneral">
     <p class="TituloFormulario">Agregar una nota</p>
-    <form method="POST" action="~/Agregar/">
+    <form method="post" action="~/Notas/Agregar/" enctype="multipart/form-data">
         <p>Nombre del título</p>
-        <input type="text" name="Titulo" />
+        <input type="text" asp-for="Nota.Titulo" />
         <p>Descripción</p>
-        <input type="text" name="Descripcion" /><br />
+        <input type="text" asp-for="Nota.Descripcion" /><br />
+        <input type="file" accept="audio/mp3" asp-for="Audio" />
         <input type="submit" />
     </form>
 </div>

@@ -1,13 +1,13 @@
-﻿
+﻿@model ProyectoPostItProgramacionWeb.ViewModels.PostItViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    ViewData["Title"] = "EliminarPostIt";
+    Layout = "_Layout";
 }
-
-<h1>EliminarPostIt</h1>
 <div class="FormularioGeneral">
     <p class="TituloFormulario">Eliminar una nota</p>
-    <form method="POST" action="~/Eliminar/">
-        <p>¿Desea eliminar&nbsp;<span>Tareas pendientes</span>?</p>
+    <form method="post" action="~/Notas/Eliminar/">
+        <input type="text" asp-for="Nota.Titulo" hidden />
+        <p>¿Desea eliminar&nbsp; @Model.Nota.Titulo?</p>
         <input type="submit" />
     </form>
 </div>

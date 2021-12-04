@@ -1,66 +1,24 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<ProyectoPostItProgramacionWeb.Models.Nota>
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment env
 @{
+    Layout = "_Layout";
 }
-<div class="contenedorNota">
-    <a href="~/Notas/Editar"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
-    <a href="~/Notas/Eliminar"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
-    <p class="tituloMazo" name="Titulo">Título del Mazo</p>
-    <p class="contenidoNota" style="" name="Contenido">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-        anim id est laborum
-    </p>
-</div>
-<div class="contenedorNota">
-    <a href="~/Notas/Editar"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
-    <a href="~/Notas/Eliminar"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
-    <p class="tituloMazo">Título del Mazo</p>
-    <p class="contenidoNota">Cuerpo de la Nota</p>
-</div>
-<div class="contenedorNota">
-    <a href="~/Notas/Editar"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
-    <a href="~/Notas/Eliminar"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
-    <p class="tituloMazo">Título del Mazo</p>
-    <p class="contenidoNota">Cuerpo de la Nota</p>
-</div>
-<div class="contenedorNota">
-    <a href="~/Notas/Editar"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
-    <a href="~/Notas/Eliminar"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
-    <p class="tituloMazo">Título del Mazo</p>
-    <p class="contenidoNota">Cuerpo de la Nota</p>
-</div>
-<div class="contenedorNota">
-    <a href="~/Notas/Editar"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
-    <a href="~/Notas/Eliminar"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
-    <p class="tituloMazo">Título del Mazo</p>
-    <p class="contenidoNota">Cuerpo de la Nota</p>
-</div>
-<div class="contenedorNota">
-    <a href="~/Notas/Editar"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
-    <a href="~/Notas/Eliminar"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
-    <p class="tituloMazo">Título del Mazo</p>
-    <p class="contenidoNota">Cuerpo de la Nota</p>
-</div>
-<div class="contenedorNota">
-    <a href="~/Notas/Editar"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
-    <a href="~/Notas/Eliminar"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
-    <p class="tituloMazo">Título del Mazo</p>
-    <p class="contenidoNota">Cuerpo de la Nota</p>
-</div>
-<div class="contenedorNota">
-    <a href="~/Notas/Editar"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
-    <a href="~/Notas/Eliminar"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
-    <p class="tituloMazo">Título del Mazo</p>
-    <p class="contenidoNota">Cuerpo de la Nota</p>
-</div>
-<div class="contenedorNota">
-    <a href="~/Notas/Editar"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
-    <a href="~/Notas/Eliminar"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
-    <p class="tituloMazo">Título del Mazo</p>
-    <p class="contenidoNota">Cuerpo de la Nota</p>
-</div>
+@foreach (var nota in Model)
+{
+    <div class="contenedorNota">
+        <a href="~/Notas/Editar/@nota.Titulo.Replace(" ","-")"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
+        <a href="~/Notas/Eliminar/@nota.Titulo.Replace(" ","-")"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
+        <p class="tituloMazo" name="Titulo">@nota.Titulo</p>
+        <p class="contenidoNota" name="Contenido">
+            @nota.Descripcion
+        </p>
+        @if (System.IO.File.Exists($"{env.WebRootPath}/audios/{nota.Id}_Audio.mp3"))
+        {
+            <audio controls>
+                <source src="~/audios/@(nota.Id)_Audio.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+        }
+
+    </div>
+}
