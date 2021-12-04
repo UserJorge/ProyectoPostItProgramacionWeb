@@ -1,15 +1,16 @@
-﻿
+﻿@model ProyectoPostItProgramacionWeb.Models.Usuario
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "_Layout";
 }
 
 <div class="FormularioGeneral">
     <p class="TituloFormulario">Iniciar Sesión</p>
-    <form method="POST" action="~/Home/IniciarSesionUsuario">
+    <form method="POST" action="~/Usuario/IniciarSesion/">
         <p>Correo Electrónico</p>
-        <input type="text" name="CorreoElectronico" /><br />
+        <input type="text" asp-for="Nombre" /><br />
         <p>Contraseña</p>
-        <input type="password" name="Pass" /><br />
+        <input type="password" name="Pass" asp-for="Password" /><br />
         <input type="submit" />
     </form>
 </div>

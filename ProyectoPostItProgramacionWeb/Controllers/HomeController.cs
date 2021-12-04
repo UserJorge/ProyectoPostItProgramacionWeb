@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ProyectoPostItProgramacionWeb.Helpers;
 using ProyectoPostItProgramacionWeb.Models;
 using System;
 using System.Collections.Generic;
@@ -25,26 +26,35 @@ namespace ProyectoPostItProgramacionWeb.Controllers
             return View(notas);
        
         }
-        [HttpGet("Usuario/Registrarse")]
+        [HttpGet("Usuario/Registrarse/")]
         public IActionResult RegistrarUsuario()
         {
             return View();
         }
+        [HttpPost("Usuario/Registrarse/")]
+        public IActionResult RegistrarUsuario(Usuario usuario)
+        {
+            usuario.Password = Cifrado.GetHash(usuario.Password);
+            Context.Add(usuario);
+            Context.SaveChanges();
+            return View();
+        }
+        [HttpPost("Usuario/IniciarSesion")]
         public IActionResult IniciarSesionUsuario()
         {
             return View();
         }
-        [HttpPost("Usuario/Iniciar")]
-        public IActionResult IniciarSesionUsuario(string nombreusuario,string clave)
+        [HttpPost("Usuario/IniciarSesion")]
+        public async Task<IActionResult> IniciarSesionUsuario(Usuario usuarioent)
         {
-            var usuario = Context.Usuario.SingleOrDefault(x => x.Nombre == nombreusuario && x.Password == clave);
+            var usuario = Context.Usuario.SingleOrDefault(x => x.Nombre == usuarioent.Nombre && x.Password == Cifrado.GetHash(usuarioent.Password));
             if (usuario!=null)
             {
                 List<Claim> claims = new List<Claim>();
                 claims.Add(new Claim(ClaimTypes.Name, usuario.Nombre));
                 claims.Add(new Claim("Id", User.Identity.ToString()));
                 var identidad = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                HttpContext.SignInAsync(new ClaimsPrincipal(identidad));
+                await HttpContext.SignInAsync(new ClaimsPrincipal(identidad));
                 return RedirectToAction("Index", "Home", new { area = "Usuario" });
             }
             else

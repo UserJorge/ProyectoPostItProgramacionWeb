@@ -25,7 +25,7 @@ namespace ProyectoPostItProgramacionWeb
                 {
                     Options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
                     Options.SlidingExpiration = true;
-                    Options.LoginPath = "/Usuario/Iniciar";
+                    Options.LoginPath = "/Usuario/IniciarSesion";
                     Options.LogoutPath = "/Usuario/Salir";
                     Options.AccessDeniedPath = "/Usuario/AccesoDenegado";
                     Options.Cookie.Name = "SesionNota";
