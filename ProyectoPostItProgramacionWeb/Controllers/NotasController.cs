@@ -78,7 +78,9 @@ namespace ProyectoPostItProgramacionWeb.Controllers
         {
             id = id.Replace("-", " ");
             var nota = Context.Nota.FirstOrDefault(x => x.Titulo == id);
-            return View(nota);
+            PostItViewModel vm = new();
+            vm.Nota = nota;
+            return View(vm);
         }
         [HttpPost("Notas/Editar/")]
         public IActionResult EditarNota(PostItViewModel vm)
@@ -105,12 +107,12 @@ namespace ProyectoPostItProgramacionWeb.Controllers
                 if (nota.Descripcion.Length>720)
                 {
                     ModelState.AddModelError("", "La descripción es demasiado grande");
-                    View(nota);
+                    View(vm);
                 }
                 if (nota.Descripcion.Length == 0)
                 {
                     ModelState.AddModelError("", "La descripción es demasiado pequeña");
-                    View(nota);
+                    View(vm);
                 }
                 nota.Descripcion = vm.Nota.Descripcion;
                 Context.Update(nota);
@@ -118,18 +120,21 @@ namespace ProyectoPostItProgramacionWeb.Controllers
                 return RedirectToAction("Index");
             }
             ModelState.AddModelError("", "La nota no fue encontrada");
-            return View(nota);
+            return View(vm);
         }
         [HttpGet("Notas/Eliminar/{id}")]
         public IActionResult EliminarNota(string id)
         {
             var nota = Context.Nota.FirstOrDefault(x => x.Titulo == id.Replace("-"," "));
-            if (nota!=null)
+            if (nota==null)
             {
                 ModelState.AddModelError("", "La nota no se encontró o el título no coincide con los registros");
                 return RedirectToAction("Index");
-            }          
-            return View(nota);
+            }
+            PostItViewModel vm = new();
+            vm.Nota = nota;
+           
+            return View(vm);
         }
         [HttpPost("Notas/Eliminar/")]
         public IActionResult EliminarNota(PostItViewModel vm)
