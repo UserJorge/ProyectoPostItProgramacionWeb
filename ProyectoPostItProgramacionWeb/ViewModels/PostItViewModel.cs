@@ -10,6 +10,7 @@ namespace ProyectoPostItProgramacionWeb.ViewModels
     public class PostItViewModel
     {
         public Nota Nota { get; set; }
+        public IEnumerable<Mazo> Mazos { get; set; }
         public IFormFile Audio { get; set; }
     }
 }

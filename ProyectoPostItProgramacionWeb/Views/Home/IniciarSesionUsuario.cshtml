@@ -7,11 +7,11 @@
 <div class="FormularioGeneral">
     <p class="TituloFormulario">Iniciar Sesión</p>
     <form method="POST" action="~/Usuario/IniciarSesion/">
-        <p>Correo Electrónico</p>
-        <input type="text" asp-for="Nombre" /><br />
+        <p>Nombre de usuario</p>
+        <input type="text" asp-for="Nombre" required/><br />
         <p>Contraseña</p>
-        <input type="password" name="Pass" asp-for="Password" /><br />
-        <input type="submit" />
+        <input type="password" asp-for="Password" required /><br />
+        <input type="submit" value="Entrar" />
     </form>
 </div>
 

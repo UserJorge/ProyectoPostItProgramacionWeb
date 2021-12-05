@@ -35,17 +35,19 @@ namespace ProyectoPostItProgramacionWeb.Controllers
         public IActionResult AgregarNota()
         {
             PostItViewModel vm = new();
-            vm.Nota = new();          
+            vm.Nota = new();
+            vm.Mazos = Context.Mazo;
             return View(vm);  
         }
         [HttpPost("Notas/Agregar/")]
         public IActionResult AgregarNota(PostItViewModel vm)
         {
             vm.Nota.FechaCreacion = DateTime.Now;
-            vm.Nota.IdMazo = 1;
             //vm.Nota.IdMazoNavigation = Context.Mazo.FirstOrDefault(x => x.Id == 1);
-           
-           
+            if (!Context.Mazo.Any(x=>x.Id==vm.Nota.IdMazo&&x.IdUsuario==1))
+            {
+
+            }        
             if (Context.Nota.Any(x=>x.Titulo==vm.Nota.Titulo))
             {
                 ModelState.AddModelError("", "No se puede registrar una nota que ya existe (título)");
@@ -88,6 +90,7 @@ namespace ProyectoPostItProgramacionWeb.Controllers
             var nota = Context.Nota.FirstOrDefault(x => x.Titulo == id);
             PostItViewModel vm = new();
             vm.Nota = nota;
+            vm.Mazos = Context.Mazo;
             return View(vm);
         }
         [HttpPost("Notas/Editar/")]

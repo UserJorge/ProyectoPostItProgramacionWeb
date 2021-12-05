@@ -6,10 +6,14 @@
 <div class="FormularioGeneral">
     <p class="TituloFormulario">Agregar una nota</p>
     <form method="post" action="~/Notas/Agregar/" enctype="multipart/form-data">
+        <p>Seleccionar un Mazo</p>
+        <select asp-items="@(new SelectList(Model.Mazos,"Id","Titulo"))" asp-for="Nota.IdMazo">
+            <option selected="selected" >--Seleccionar el mazo--</option>
+        </select>
         <p>Nombre del título</p>
         <input type="text"  asp-for="Nota.Titulo" />
         <p>Descripción</p>
-        <input type="text" asp-for="Nota.Descripcion" /><br />
+        <input type="text" asp-for="Nota.Descripcion" /><br/>
         <input type="file" accept="audio/mp3" asp-for="Audio" />
         <input type="submit" />
     </form>

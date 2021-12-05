@@ -39,7 +39,7 @@ namespace ProyectoPostItProgramacionWeb.Controllers
             Context.SaveChanges();
             return View();
         }
-        [HttpPost("Usuario/IniciarSesion")]
+        [HttpGet("Usuario/IniciarSesion")]
         public IActionResult IniciarSesionUsuario()
         {
             return View();
