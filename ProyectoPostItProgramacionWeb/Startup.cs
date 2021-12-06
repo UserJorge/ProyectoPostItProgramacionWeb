@@ -48,8 +48,8 @@ namespace ProyectoPostItProgramacionWeb
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute();
-                endpoints.MapControllerRoute(name: "areas", pattern: "{areas:exists}/{controller=Notas}/{action=Index}/{id?}");                       
+                endpoints.MapControllerRoute(name: "areas", pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapDefaultControllerRoute();             
             });      
         }
     }
