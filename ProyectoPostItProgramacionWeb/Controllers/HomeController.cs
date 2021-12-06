@@ -37,7 +37,7 @@ namespace ProyectoPostItProgramacionWeb.Controllers
             usuario.Password = Cifrado.GetHash(usuario.Password);
             Context.Add(usuario);
             Context.SaveChanges();
-            return View();
+            return RedirectToAction("IniciarSesionUsuario");
         }
         [HttpGet("Usuario/IniciarSesion")]
         public IActionResult IniciarSesionUsuario()
@@ -47,7 +47,8 @@ namespace ProyectoPostItProgramacionWeb.Controllers
         [HttpPost("Usuario/IniciarSesion")]
         public async Task<IActionResult> IniciarSesionUsuario(Usuario usuarioent)
         {
-            var usuario = Context.Usuario.SingleOrDefault(x => x.Nombre == usuarioent.Nombre && x.Password == Cifrado.GetHash(usuarioent.Password));
+            var usuario = await Context.Usuario.SingleOrDefaultAsync(x => x.Nombre == usuarioent.Nombre && x.Password == Cifrado.GetHash(usuarioent.Password));
+            //var usuario = Context.Usuario.SingleOrDefault(x => x.Nombre == usuarioent.Nombre && x.Password == Cifrado.GetHash(usuarioent.Password));
             if (usuario!=null)
             {
                 List<Claim> claims = new List<Claim>();
@@ -55,12 +56,12 @@ namespace ProyectoPostItProgramacionWeb.Controllers
                 claims.Add(new Claim("Id", User.Identity.ToString()));
                 var identidad = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 await HttpContext.SignInAsync(new ClaimsPrincipal(identidad));
-                return RedirectToAction("Index", "Home", new { area = "Usuario" });
+                return RedirectToAction("Index","Home",new {area="Usuario"});
             }
             else
             {
                 ModelState.AddModelError("", "El usuario o contraseña son incorrectos");
-               return View();
+               return View(usuarioent);
             }
          
         }

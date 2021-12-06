@@ -11,6 +11,7 @@
         <input type="text" asp-for="Nombre" required/><br />
         <p>Contraseña</p>
         <input type="password" asp-for="Password" required /><br />
+        <p id="error">@Html.ValidationSummary()</p>
         <input type="submit" value="Entrar" />
     </form>
 </div>
