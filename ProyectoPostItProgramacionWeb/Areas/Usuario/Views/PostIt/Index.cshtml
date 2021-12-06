@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ProyectoPostItProgramacionWeb.Models.Nota>
 @inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment env
 @{
-    Layout = "_Layout";
+    Layout = "_AdmLayout";
 }
 <h2>Bienvenido @User.Identity.Name</h2>
 @foreach (var nota in Model)
