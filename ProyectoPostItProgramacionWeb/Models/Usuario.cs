@@ -10,6 +10,7 @@ namespace ProyectoPostItProgramacionWeb.Models
         public Usuario()
         {
             Mazo = new HashSet<Mazo>();
+            Postit = new HashSet<Postit>();
         }
 
         public int Id { get; set; }
@@ -17,5 +18,6 @@ namespace ProyectoPostItProgramacionWeb.Models
         public string Password { get; set; }
 
         public virtual ICollection<Mazo> Mazo { get; set; }
+        public virtual ICollection<Postit> Postit { get; set; }
     }
 }

@@ -19,12 +19,15 @@ namespace ProyectoPostItProgramacionWeb.Models
 
         public virtual DbSet<Mazo> Mazo { get; set; }
         public virtual DbSet<Nota> Nota { get; set; }
+        public virtual DbSet<Postit> Postit { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning 
+                optionsBuilder.UseMySql("server=localhost;user=root;password=2700;database=postitdb", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.12-mysql"));
             }
         }
 
@@ -78,6 +81,37 @@ namespace ProyectoPostItProgramacionWeb.Models
                     .HasForeignKey(d => d.IdMazo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fkNotaMazo");
+            });
+
+            modelBuilder.Entity<Postit>(entity =>
+            {
+                entity.HasKey(e => new { e.Id, e.IdUsuario })
+                    .HasName("PRIMARY")
+                    .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+
+                entity.ToTable("postit");
+
+                entity.HasIndex(e => e.IdUsuario, "fk_PostIt_Usuario_idx");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .ValueGeneratedOnAdd();
+
+                entity.Property(e => e.IdUsuario).HasColumnType("int(11)");
+
+                entity.Property(e => e.Contenido)
+                    .IsRequired()
+                    .HasMaxLength(720);
+
+                entity.Property(e => e.Titulo)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.HasOne(d => d.IdUsuarioNavigation)
+                    .WithMany(p => p.Postit)
+                    .HasForeignKey(d => d.IdUsuario)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fkPostItUsuario");
             });
 
             modelBuilder.Entity<Usuario>(entity =>
