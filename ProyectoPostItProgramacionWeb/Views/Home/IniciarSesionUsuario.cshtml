@@ -6,12 +6,12 @@
 
 <div class="FormularioGeneral">
     <p class="TituloFormulario">Iniciar Sesión</p>
-    <form method="POST" action="~/Usuario/IniciarSesion/">
+    <form class="Forminiciarsesion" method="POST"  action="~/Usuario/IniciarSesion/">
         <p>Nombre de usuario</p>
-        <input type="text" asp-for="Nombre" required/><br />
+        <input class="nombreusuarioiniciarsesion" type="text" asp-for="Nombre" required/><br />
         <p>Contraseña</p>
-        <input type="password" asp-for="Password" required /><br />
-        <p id="error">@Html.ValidationSummary()</p>
+        <input class="contraseñainiciarsesion"  type="password" asp-for="Password" required /><br />
+        <a class="erroriniciarsesion" id="error">@Html.ValidationSummary()</a>
         <input class="BotonIniciarSesion" type="submit" value="Entrar" />
     </form>
 </div>
