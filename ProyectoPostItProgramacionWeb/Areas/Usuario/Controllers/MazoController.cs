@@ -90,11 +90,21 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
             {
                 ModelState.AddModelError("", "El mazo no puede ser eliminado por que no existe");
                 return View(mazo);
+            }          
+            var mazodb = Context.Mazo.FirstOrDefault(x => x.Titulo == mazo.Titulo);
+            if (mazodb!=null)
+            {
+                ModelState.AddModelError("", "El mazo no puede ser eliminado por que no existe o no se encuentra");
+                return View(mazo);
             }
-            var mazodb = Context.Mazo.FirstOrDefault(x => x.Titulo == mazo.Titulo);           
+            if (Context.Nota.Include(x=>x.IdMazoNavigation).Any(x=>x.IdMazo==mazodb.Id))
+            {
+                ModelState.AddModelError("", "No se puede eliminar un mazo que tiene notas");
+                return View(mazo);
+            }
             Context.Remove(mazodb);
             Context.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

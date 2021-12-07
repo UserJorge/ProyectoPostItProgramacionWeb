@@ -116,12 +116,12 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
                 if (!(vm.Audio.ContentType != "audio/mp3" || vm.Audio.ContentType != "audio/mpeg"))
                 {
                     ModelState.AddModelError("", "El archivo no está en el formato M4A");
-                    View(vm);
+                   return View(vm);
                 }
                 if (vm.Audio.Length > 1024 * 1024 * 10)
                 {
                     ModelState.AddModelError("", "El archivo no debe ser mayor a 10MB");
-                    View(vm);
+                    return View(vm);
                 }
                 string path = Host.WebRootPath + "/audios/" + $"{nota.Id}_Audio.mp3";
                 FileStream fs = new FileStream(path, FileMode.Create);
@@ -132,12 +132,12 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
                 if (nota.Descripcion.Length > 720)
                 {
                     ModelState.AddModelError("", "La descripción es demasiado grande");
-                    View(vm);
+                  return View(vm);
                 }
                 if (nota.Descripcion.Length == 0)
                 {
                     ModelState.AddModelError("", "La descripción es demasiado pequeña");
-                    View(vm);
+                   return View(vm);
                 }
                 nota.Descripcion = vm.Nota.Descripcion;
                 Context.Update(nota);
