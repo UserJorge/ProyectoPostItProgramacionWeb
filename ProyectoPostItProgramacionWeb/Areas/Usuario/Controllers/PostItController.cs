@@ -40,7 +40,12 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
         {
             PostItViewModel vm = new();
             vm.Nota = new();
-            vm.Mazos = Context.Mazo;
+            vm.Mazos = Context.Mazo.Include(x=>x.IdUsuarioNavigation).Select(x=>x).Where(x=>x.IdUsuarioNavigation.Nombre==User.Identity.Name);
+            if (vm.Mazos.Count()==0)
+            {
+                ModelState.AddModelError("", "Necesita agregar un nuevo mazo");
+                return RedirectToAction("Index");
+            }
             return View(vm);
         }
         [HttpPost("Usuario/PostIt/Agregar/")]
@@ -49,26 +54,26 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
         {
             vm.Nota.FechaCreacion = DateTime.Now;
             //si no hay un mazo no se puede agregar
-
-            if (Context.Mazo.Include(x => x.IdUsuarioNavigation).Any(x => x.IdUsuario == Context.Usuario.FirstOrDefault(x => x.Nombre == User.Identity.Name).Id)) 
+          
+            if (!Context.Mazo.Include(x => x.IdUsuarioNavigation).Any(x => x.IdUsuario == Context.Usuario.FirstOrDefault(x => x.Nombre == User.Identity.Name).Id)) 
             {
                 ModelState.AddModelError("", "Porfavor cree un nuevo mazo, para agregar una nota");
-                View(vm);
+                return View(vm);
             }
             if (Context.Nota.Any(x => x.Titulo == vm.Nota.Titulo))
             {
                 ModelState.AddModelError("", "No se puede registrar una nota que ya existe (título)");
-                View(vm);
+                return View(vm);
             }
             if (vm.Nota.Titulo.Length > 50)
             {
                 ModelState.AddModelError("", "El título es demasiado grande");
-                View(vm);
+                return View(vm);
             }
             if (vm.Nota.Descripcion.Length > 720)
             {
                 ModelState.AddModelError("", "Texto en la descripción demasiado grande");
-                View(vm);
+                return View(vm);
             }
             Context.Add(vm.Nota);
             Context.SaveChanges();
@@ -77,12 +82,12 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
                 if (!(vm.Audio.ContentType != "audio/mp3" || vm.Audio.ContentType != "audio/mpeg"))
                 {
                     ModelState.AddModelError("", "El archivo no está en el formato M4A");
-                    View(vm);
+                    return View(vm);
                 }
                 if (vm.Audio.Length > 1024 * 1024 * 10)
                 {
                     ModelState.AddModelError("", "El archivo no debe ser mayor a 10MB");
-                    View(vm);
+                   return View(vm);
                 }
                 string path = Host.WebRootPath + "/audios/" + $"{vm.Nota.Id}_Audio.mp3";
                 FileStream fs = new FileStream(path, FileMode.Create);

@@ -4,6 +4,7 @@
     Layout = "_AdmLayout";
 }
 <h2>Bienvenido @User.Identity.Name</h2>
+<p id="error">@Html.ValidationSummary()</p>
 @foreach (var nota in Model)
 {
     <div class="contenedorNota">

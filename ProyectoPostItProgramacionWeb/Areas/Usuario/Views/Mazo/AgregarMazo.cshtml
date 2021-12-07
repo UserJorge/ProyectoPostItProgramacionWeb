@@ -1,21 +1,14 @@
-﻿@model ProyectoPostItProgramacionWeb.ViewModels.PostItViewModel
+﻿@model ProyectoPostItProgramacionWeb.Models.Mazo
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "_AdmLayout";
 }
 <div class="FormularioGeneral">
-    <p class="TituloFormulario">Agregar una nota</p>
-    <form class="cuadroagregarnota" method="post" action="~/Usuario/Mazo/Agregar/" enctype="multipart/form-data">
+    <p class="TituloFormulario">Agregar una mazo</p>
+    <form class="cuadroagregarnota" method="post" action="~/Usuario/Usuario/AgregarMazo/" enctype="multipart/form-data">
         <p>Seleccionar un Mazo</p>
-        <select class="seleccionaragregarnota" asp-items="@(new SelectList(Model.Mazos,"Id","Titulo"))" asp-for="Nota.IdMazo">
-            <option class="selec" selected="selected">--Seleccionar el mazo--</option>
-        </select>
         <p>Nombre del título</p>
-        <input type="text" class="tituloagregarnota" asp-for="Nota.Titulo" />
-        <p>Descripción</p>
-        <input type="text" class="descripcionagregarnota" asp-for="Nota.Descripcion" /><br />
-
-        <input type="file" class="audioagregarnota" accept="audio/mp3" asp-for="Audio" /><br />
+        <input type="text" class="tituloagregarnota" asp-for="Titulo" />
         <input class="BotonAgregarNota" type="submit" value="Enviar &#x2b9a;" />
     </form>
 </div>

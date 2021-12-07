@@ -34,42 +34,51 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
         [HttpGet("Usuario/Usuario/AgregarMazo")]
         public IActionResult AgregarMazo()
         {
-
             return View();
         }
-        [HttpGet("Usuario/Usuario/AgregarMazo")]
+        [HttpPost("Usuario/Usuario/AgregarMazo")]
         public IActionResult AgregarMazo(ProyectoPostItProgramacionWeb.Models.Mazo mazo)
         {
+            if (Context.Mazo.Any(x => x.Titulo == mazo.Titulo))
+            {
+                ModelState.AddModelError("", "No se puede crear otro mazo con el mismo titulo");
+                return View(mazo);
+            }
             if (mazo!=null)
             {
+                var usuario = Context.Usuario.FirstOrDefault(x => x.Nombre == User.Identity.Name);
+                mazo.IdUsuario = usuario.Id;
                 Context.Mazo.Add(mazo);
                 Context.SaveChanges();
             }
-            return View();
+
+            return RedirectToAction("Index");
         }
+        [HttpGet("Usuario/Usuario/EditarMazo")]
         public IActionResult EditarMazo()
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost("Usuario/Usuario/EditarMazo")]
         public IActionResult EditarMazo(Models.Mazo mazo)
         {
             //si hay una modificación de que el mazo tenga notas, no va a ser posible la edición.
             //Ubicar el usuario
             //En que mazo lo vamos a editar
-
             if (mazo!=null)
             {             
                 Context.Mazo.Update(mazo);
                 Context.SaveChanges();
             }
+            
             return View();
         }
+        [HttpGet("Usuario/Usuario/EliminarMazo")]
         public IActionResult EliminarMazo()
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost("Usuario/Usuario/EliminarMazo")]
         public IActionResult EliminarMazo(Models.Mazo mazo)
         {
             if (mazo == null)
