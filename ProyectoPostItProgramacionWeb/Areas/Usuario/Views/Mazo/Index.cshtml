@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ProyectoPostItProgramacionWeb.Models.Mazo>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+    @{
+        Layout = "_AdmLayout";
+    }
+    <h2>Bienvenido @User.Identity.Name</h2>
+    @foreach (var mazo in Model)
+    {
+        <div class="contenedorNota">
+            <a href="~/Notas/Editar/@mazo.Id"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
+            <a href="~/Notas/Eliminar/@mazo.Id"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
+            <p class="tituloMazo" name="Titulo">@mazo.Titulo</p>                  
+        </div>
+    }
