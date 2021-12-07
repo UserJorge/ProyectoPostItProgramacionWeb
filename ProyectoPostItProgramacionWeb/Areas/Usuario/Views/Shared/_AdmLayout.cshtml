@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Post It App">
+    <meta name="keywords" content="Note, Study, App">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/f56a2d1f2c.js" crossorigin="anonymous"></script>
+    <link href="~/styles/StyleSheet.css" type="text/css" rel="stylesheet" />
+    <title>Aplicación Post It</title>
+</head>
+<body>
+    <header>
+        <h1>Post It</h1>
+        <ul>
+            <li><i class="fas fa-plus"></i><a href="~/Notas/Agregar/">&nbsp;<span>Agregar Nota</span></a></li>
+            <li><i class="far fa-sticky-note"></i><a href="~/Home/Index">&nbsp; Notas Recientes</a></li>
+            <li><i class="fas fa-user"></i><a href="~/Usuario/IniciarSesion">&nbsp; Iniciar Sesión</a></li>
+            <li><i class="fas fa-user-plus"></i><a href="~/Usuario/Registrarse">&nbsp;Registrarse</a></li>
+            <li><i class="fas fa-sign-out-alt"></i><a href="~/Usuario/Usuario/Salir">&nbsp;Cerrar Sesión</a></li>
+        </ul>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <!--<footer>
+        <p>Proyecto de Programación Web 2021</p>
+    </footer>-->
+</body>
+</html>

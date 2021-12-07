@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProyectoPostItProgramacionWeb.Models;
 using ProyectoPostItProgramacionWeb.ViewModels;
@@ -27,11 +28,12 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
             var usuarios =(IEnumerable<ProyectoPostItProgramacionWeb.Models.Usuario>) Context.Usuario.Select(x => x).Where(x => x.Nombre != "admin").ToList();
             return View(usuarios);
         }
-        [HttpGet("Usuario/Salir/")]
+       [HttpGet("Usuario/Usuario/Salir")]
         [Authorize]
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-            return View();
+            await HttpContext.SignOutAsync();
+            return Redirect("~/");
         }
         [Authorize]
         [HttpPost("Usuario/Eliminar/")]
