@@ -1,96 +1,127 @@
 ﻿
-@font-face 
-{
+
+@font-face {
     font-family: CursiveNote /*arial, sans-serif*/;
     font-family: CursiveNote;
+
     src: url(../fonts/DancingScript-VariableFont_wght.ttf);
 }
-*
-{
+
+@font-face {
+    src: url(../fonts/ReenieBeanie-Regular.ttf);
+    font-family:Reenie Beanie;
+}
+
+* {
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
 }
-header>i
-{
+
+header > i {
     color: white;
 }
-a{
-    
-    text-decoration:none;
-    text-transform:none;
+
+a {
+    text-decoration: none;
+    text-transform: none;
 }
+
 main > i {
     color: black;
-   
 }
-header
-{
+
+header {
     display: flex;
     align-content: space-between;
     height: 12vh;
     width: 100vw;
-    background-color: cornflowerblue;
-}
-header h1 
-{ /* /Este es el titulo Post It-->  */
-    text-align: center;
-    background-color: red;
-    font-family: CursiveNote;
-    font-size: 6vw;
-    color: white;
-    width: 20vw;
-    height: 12vh;
-    line-height: 12vh;
-    /* Firefox */
-    -moz-box-shadow: 5px 5px 7px rgba(33,33,33,1);
-    /* Safari+Chrome */
-    -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-    /* Opera */
-     box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-}
-header ul /*Este es el apartado de nueva nota, notas recientes, iniciar sesion, cerrar sesion*/ 
-{
-     display: flex;
-     flex-wrap: wrap;
-     align-content: center;
-     list-style-type: none;
-     margin: 5px;
-}
-header ul li /*Apartado de adentro*/ 
-{
-     width: 10vw;
-     text-align: center;
-     list-style: none;
-}
-header ul li:hover 
-{
-     background-color: deepskyblue;
-}
-header ul li a 
-{
-     color: white;
-     font-family: CursiveNote;
-     font-size:large;
-     text-align: center;
-     line-height: 12vh;
-     margin: auto;
+    background: linear-gradient(45deg, #DB7093,#C71585, #FF1493, #FF69B4, #FFB6C1, #FFC0CB);
 }
 
-main 
-{ /*Notas*/
+    header h1 { /* /Este es el titulo Post It-->  */
+        font-weight: bold;
+        text-align: center;
+        font-family: CursiveNote;
+        font-size: 6vw;
+        color: white;
+        width: 20vw;
+        height: 12vh;
+        line-height: 12vh;
+        /* Firefox */
+        -moz-box-shadow: 5px 5px 7px rgba(33,33,33,1);
+        /* Safari+Chrome */
+        -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+        /* Opera */
+        box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    }
+
+    header ul /*Este es el apartado de nueva nota, notas recientes, iniciar sesion, cerrar sesion*/ {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        list-style-type: none;
+        margin: 5px;
+        font-size: 15px;
+        width: 100%;
+    }
+
+        header ul li /*Apartado de adentro* del encabezado post it*/ {
+            width: 10vw;
+            text-align: center;
+            list-style: none;
+            font-size: 27px;
+        }
+
+            header ul li:hover {
+                /*background-color: deepskyblue;*/
+            }
+
+            header ul li a /*Texto AgregarNota etc*/ {
+                color: white;
+                font-family: CursiveNote;
+                font-size: 27px;
+                text-align: center;
+                line-height: 12vh;
+                margin: auto;
+            }
+
+body {
+    margin: 0;
+}
+
+footer {
+    position: center;
+    font-family: 'Agency FB';
+    font-style: normal;
+    font-weight: 800;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+}
+
+main { /*Notas*/
     display: flex;
     flex-wrap: wrap;
-    justify-content:center;
+    justify-content: center;
     flex-direction: row;
     height: 88vh;
     width: 100vw;
     text-align: center;
+    font-family: 'Comic Sans MS';
+    font-size: 35px;
+    /*font-size:30px;*/
+    margin: 20px;
+    /*background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0)), url(https://images.freeimages.com/images/premium/previews/2110/21108028-seamless-office-supplies-vector-background.jpg);*/
+    background-repeat: repeat;
+    background-image: url(https://images.freeimages.com/images/premium/previews/2110/21108028-seamless-office-supplies-vector-background.jpg);
 }
-.contenedorNota /*:nth-child(even)*/ {
+
+.contenedorNota {
     text-decoration: none;
-    background-color: lightgoldenrodyellow;
+    background-color: #FBE364DD;
     width: 25vw;
-    height: 44vh;
+    height: 42vh;
     margin: 10px;
     padding: 1em;
     display: block;
@@ -106,27 +137,61 @@ main
     position: relative;
     top: 5px;
         */
+    -webkit-transform: rotate(-5deg);
+    -o-transform: rotate(-5deg);
+    -moz-transform: rotate(-5deg);
     height: 44vh;
+    /*background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1)), src(../images/tachuela.png);*/
+    /*background: linear-gradient(top, black 10%, orangered 75%, yellow);*/
 }
-.contenedorNota:hover 
-{
-    background-color: lightgoldenrodyellow;
+
+
+    .contenedorNota:hover /*Al pasar por encima*/ {
+        background-color: #FFD700;
+        font-family: 'Comic Sans MS';
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        text-align: center;
+        font-family: 'Comic Sans MS';
+        font-size: 35px;
+    }
+
+    .contenedorNota > i /*Texto de al pasar por encima*/{
+        color: black;
+        background-color: black;
+        font-size: 30px;
+
+    }
+
+.TituloFormulario /*AgregarNota Letra*/ {
+    font-family: CursiveNote;
+    font-size: 60px; /*xx-large;*/
 }
-.contenedorNota > i{
-    color:black;
-    background-color:black;
-    
+
+.FormularioGeneral /*AgregarNota Fondo, seleccion de mazo*/ {
+    background-color: lightblue;
+    height: 88vh;
+    width: 100vw;
+    font-size: 25px;
 }
-.TituloFormulario{
-    font-family:CursiveNote;
-    font-size:xx-large;
-}
-.FormularioGeneral{
-    background-color:lightgoldenrodyellow;
-    height:88vh;
-    width:100vw;
-}
-.contenedorNota>.contenidoNota {
+
+.contenedorNota > .contenidoNota /*Texto de la nota*/ {
+    font-family:Reenie Beanie;
     text-align: justify;
     text-justify: inter-word;
+    font-size: 40px;
+    font-weight:bold;
+}
+/*IniciarSesion*/
+.FormularioGeneral > .BotonIniciarSesion {
+    font-family: 'Comic Sans MS';
+    font-size: 25px;
+    background-color: red;
+}
+
+/*AgregarNota*/
+.FormularioGeneral > .BotonAgregarNota {
+    font-size:30px;
+    background-color:red;
 }
