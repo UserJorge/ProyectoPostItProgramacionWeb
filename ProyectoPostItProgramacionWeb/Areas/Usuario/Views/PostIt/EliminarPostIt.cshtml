@@ -5,7 +5,7 @@
 }
 <div class="FormularioGeneral">
     <p class="TituloFormulario">Eliminar una nota</p>
-    <form method="post" action="~/Notas/Eliminar/">
+    <form method="post" action="~/Usuario/PostIt/Eliminar/">
         <input type="text" asp-for="Nota.Titulo" hidden />
         <p>¿Desea eliminar&nbsp; @Model.Nota.Titulo?</p>
         <input type="submit" />

@@ -54,6 +54,10 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
         [HttpPost]
         public IActionResult EditarMazo(Models.Mazo mazo)
         {
+            //si hay una modificación de que el mazo tenga notas, no va a ser posible la edición.
+            //Ubicar el usuario
+            //En que mazo lo vamos a editar
+
             if (mazo!=null)
             {             
                 Context.Mazo.Update(mazo);

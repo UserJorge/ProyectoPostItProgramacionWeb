@@ -35,6 +35,7 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
             return View(notas);
         }
         [Route("Usuario/PostIt/Agregar/")]
+        [Authorize]
         public IActionResult AgregarPostIt()
         {
             PostItViewModel vm = new();
@@ -42,14 +43,16 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
             vm.Mazos = Context.Mazo;
             return View(vm);
         }
-        [HttpPost]
+        [HttpPost("Usuario/PostIt/Agregar/")]
+        [Authorize]
         public IActionResult AgregarPostIt(PostItViewModel vm)
         {
             vm.Nota.FechaCreacion = DateTime.Now;
-            //vm.Nota.IdMazoNavigation = Context.Mazo.FirstOrDefault(x => x.Id == 1);
-            if (Context.Mazo.Any(x => x.Id == vm.Nota.IdMazo && x.IdUsuarioNavigation.Nombre==User.Identity.Name))
+            //si no hay un mazo no se puede agregar
+
+            if (Context.Mazo.Include(x => x.IdUsuarioNavigation).Any(x => x.IdUsuario == Context.Usuario.FirstOrDefault(x => x.Nombre == User.Identity.Name).Id)) 
             {
-                ModelState.AddModelError("", "No se puede registrar una nota que ya existe (Usuario)");
+                ModelState.AddModelError("", "Porfavor cree un nuevo mazo, para agregar una nota");
                 View(vm);
             }
             if (Context.Nota.Any(x => x.Titulo == vm.Nota.Titulo))
@@ -88,6 +91,7 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
             return RedirectToAction("Index");
         }
         [Route("Usuario/PostIt/Editar/{id}")]
+        [Authorize]
         public IActionResult EditarPostIt(string id)
         {
             id = id.Replace("-", " ");
@@ -98,6 +102,7 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
             return View(vm);
         }
         [HttpPost("Usuario/PostIt/Editar/")]
+        [Authorize]
         public IActionResult EditarPostIt(PostItViewModel vm)
         {
             var nota = Context.Nota.FirstOrDefault(x => x.Titulo == vm.Nota.Titulo);
@@ -138,6 +143,7 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
             return View(vm);
         }
         [Route("Usuario/PostIt/Eliminar/{id}")]
+        [Authorize]
         public IActionResult EliminarPostIt(string id)
         {
             var nota = Context.Nota.FirstOrDefault(x => x.Titulo == id.Replace("-", " "));
@@ -152,6 +158,7 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
             return View(vm);
         }
         [HttpPost("Usuario/PostIt/Eliminar/")]
+        [Authorize]
         public IActionResult EliminarPostIt(PostItViewModel vm)
         {
             var nota = Context.Nota.FirstOrDefault(x => x.Titulo == vm.Nota.Titulo);
