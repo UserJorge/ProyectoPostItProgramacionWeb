@@ -25,9 +25,9 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
             Host = host;
         }
         //Aquí pedirá autorización para visualizar las notas del usuario
-        [Route("Usuario/Home/Index/")]
-        [Route("Usuario/Home/")]
-        [Route("Usuario/")]
+        [HttpGet("Usuario/Home/Index/")]
+        [HttpGet("Usuario/Home/")]
+        [HttpGet("Usuario/")]
         [Authorize]            
         public IActionResult Index()
         {
