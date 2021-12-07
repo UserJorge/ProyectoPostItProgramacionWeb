@@ -6,11 +6,11 @@
 
 <div class="FormularioGeneral">
     <p class="TituloFormulario">Registrarse</p>
-    <form method="POST" action="~/Usuario/Registrarse/">
+    <form class="FormRegistrar" method="POST" action="~/Usuario/Registrarse/">
         <p>Nombre de usuario</p>
-        <input type="text" asp-for="Nombre" /><br />
+        <input class="nombreRegistrarUsuario" type="text" asp-for="Nombre" /><br />
         <p>Contraseña</p>
-        <input type="password"  asp-for="Password"/><br />
-        <input type="submit" />
+        <input class="contraseñaRegistrarUsuario" type="password"  asp-for="Password"/><br />
+        <input class="botonRegistrar"  type="submit" value="Registrar"/>
     </form>
 </div>
