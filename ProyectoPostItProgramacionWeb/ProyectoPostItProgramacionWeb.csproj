@@ -19,4 +19,10 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.Mysql" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\images\tachuela.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

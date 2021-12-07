@@ -4,7 +4,7 @@
     Layout = "_Layout";
 }
 <div class="FormularioGeneral">
-    <p class="TituloFormulario">Agregar una nota</p>
+    <p class="TituloFormulario">Editar Nota</p>
     <form method="post" action="~/Notas/Editar/" enctype="multipart/form-data">
         <p>Seleccionar un Mazo</p>
         <select asp-items="@(new SelectList(Model.Mazos,"Id","Titulo"))" asp-for="Nota.IdMazo">
