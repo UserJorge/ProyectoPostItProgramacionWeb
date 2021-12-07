@@ -3,13 +3,12 @@
 @font-face {
     font-family: CursiveNote /*arial, sans-serif*/;
     font-family: CursiveNote;
-
     src: url(../fonts/DancingScript-VariableFont_wght.ttf);
 }
 
 @font-face {
     src: url(../fonts/ReenieBeanie-Regular.ttf);
-    font-family:Reenie Beanie;
+    font-family: Reenie Beanie;
 }
 
 * {
@@ -28,6 +27,10 @@ a {
 
 main > i {
     color: black;
+}
+
+p {
+    font-size: 30px;
 }
 
 header {
@@ -111,7 +114,7 @@ main { /*Notas*/
     font-family: 'Comic Sans MS';
     font-size: 35px;
     /*font-size:30px;*/
-    margin: 20px;
+    margin: 1px;
     /*background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0)), url(https://images.freeimages.com/images/premium/previews/2110/21108028-seamless-office-supplies-vector-background.jpg);*/
     background-repeat: repeat;
     background-image: url(https://images.freeimages.com/images/premium/previews/2110/21108028-seamless-office-supplies-vector-background.jpg);
@@ -157,16 +160,25 @@ main { /*Notas*/
         font-size: 35px;
     }
 
-    .contenedorNota > i /*Texto de al pasar por encima*/{
+    .contenedorNota > i /*Texto de al pasar por encima*/ {
         color: black;
         background-color: black;
         font-size: 30px;
-
     }
 
+    .contenedorNota > .contenidoNota /*Texto de la nota*/ {
+        font-family: Reenie Beanie;
+        text-align: justify;
+        text-justify: inter-word;
+        font-size: 40px;
+        font-weight: bold;
+    }
+/*Agregar Nota*/
 .TituloFormulario /*AgregarNota Letra*/ {
     font-family: CursiveNote;
-    font-size: 60px; /*xx-large;*/
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .FormularioGeneral /*AgregarNota Fondo, seleccion de mazo*/ {
@@ -174,24 +186,183 @@ main { /*Notas*/
     height: 88vh;
     width: 100vw;
     font-size: 25px;
+    background-image: url(https://previews.123rf.com/images/jevee/jevee1604/jevee160400165/55707989-sin-fisuras-vector-patr%C3%B3n-con-elementos-de-material-de-oficina-fondo-colorido-con-las-tijeras-port%C3%A1t.jpg);
+    align-items: center;
+    display: block;
 }
 
-.contenedorNota > .contenidoNota /*Texto de la nota*/ {
-    font-family:Reenie Beanie;
-    text-align: justify;
-    text-justify: inter-word;
-    font-size: 40px;
-    font-weight:bold;
-}
-/*IniciarSesion*/
-.FormularioGeneral > .BotonIniciarSesion {
-    font-family: 'Comic Sans MS';
-    font-size: 25px;
-    background-color: red;
-}
+    .FormularioGeneral > .cuadroagregarnota /*Form*/ {
+        background-color: #1E90FFAA;
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+        font-size: 30px;
+        height: 600px;
+        width: 500px;
+        border-radius: 15px;
+    }
+        /*Nombre del titulo*/
+        .FormularioGeneral > .cuadroagregarnota > .tituloagregarnota {
+            height: 35px;
+            width: 350px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+            align-content: center;
+            font-family: 'Comic Sans MS';
+            text-align: center;
+            left: 50%;
+        }
+        /*Descripcion*/
+        .FormularioGeneral > .cuadroagregarnota > .descripcionagregarnota {
+            height: 250px;
+            width: 400px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-family: 'Comic Sans MS';
+        }
 
-/*AgregarNota*/
-.FormularioGeneral > .BotonAgregarNota {
-    font-size:30px;
-    background-color:red;
-}
+        /*AgregarNota Boton enviar*/
+        .FormularioGeneral > .cuadroagregarnota > .BotonAgregarNota {
+            font-size: 30px;
+            background-color: #7cfC00aa;
+            align-content: center;
+            font-family: 'Comic Sans MS';
+            border-radius: 2px;
+            border-color: transparent;
+            margin-top: 30px;
+        }
+
+        .FormularioGeneral > .cuadroagregarnota > seleccionaragregarnota {
+            font-size: 10px;
+        }
+
+        .FormularioGeneral > .cuadroagregarnota > .audioagregarnota {
+            font-size: 20px;
+        }
+
+        .FormularioGeneral > .cuadroagregarnota > .seleccionaragregarnota > .selec {
+            font-size: 15px;
+        }
+    /*Fin Agregar Nota*/
+    /*Editar Nota*/
+    .FormularioGeneral > .FormEditar {
+        background-color: #ffae40aa;
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+        font-size: 30px;
+        height: 600px;
+        width: 500px;
+        border-radius: 15px;
+    }
+
+    .FormularioGeneral.FormEditar.Botoneditarnota {
+        background-color: dodgerblue;
+    }
+
+    .FormularioGeneral > .FormEditar > .descripcioneditarnota {
+        height: 250px;
+        width: 400px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-family: 'Comic Sans MS';
+    }
+
+    .FormularioGeneral > .FormEditar > .tituloagregarnota {
+        height: 35px;
+        width: 350px;
+        border-radius: 5px;
+        margin-top: 10px;
+        font-weight: bold;
+        align-content: center;
+        font-family: 'Comic Sans MS';
+        text-align: center;
+    }
+
+    .FormularioGeneral > .FormEditar > .audioeditarnota {
+        font-size: 20px;
+    }
+
+    .FormularioGeneral > .FormEditar > .Botoneditarnota {
+        font-size: 30px;
+        background-color: #8c004bdd;
+        align-content: center;
+        font-family: 'Comic Sans MS';
+        border-radius: 2px;
+        border-color: transparent;
+        margin-top: 30px;
+    }
+
+    /*FIN EDITAR NOTA*/
+    /*ELIMINAR NOTA*/
+    .FormularioGeneral > .FormEliminar {
+        background-color: #a30000bb;
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+        font-size: 30px;
+        height: 170px;
+        width: 650px;
+        border-radius: 15px;
+    }/*Boton de eliminar */
+        .FormularioGeneral > .FormEliminar > .botonEliminarNota {
+            font-size: 30px;
+            background-color: #a30000dd;
+            align-content: center;
+            font-family: 'Comic Sans MS';
+            border-radius: 2px;
+            border-color: transparent;
+            margin-top: 30px;
+        }
+
+    /*IniciarSesion*/
+    /*background-color: lightcoral;*/
+    .FormularioGeneral > .Forminiciarsesion {
+        background-color: #ffffffDD;
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+        font-size: 30px;
+        height: 350px;
+        width: 450px;
+        border-radius: 15px;
+        border-style: solid;
+        border-color: lightgray;
+    }
+
+        .FormularioGeneral > .Forminiciarsesion > .nombreusuarioiniciarsesion {
+            height: 30px;
+            width: 250px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-family: 'Comic Sans MS';
+            text-align: left;
+            background-color: #e9f0fd;
+            BORDER: 1px solid #dddfe2;
+        }
+
+        .FormularioGeneral > .Forminiciarsesion > .contraseñainiciarsesion {
+            height: 30px;
+            width: 250px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-family: 'Comic Sans MS';
+        }
+
+        .FormularioGeneral > .Forminiciarsesion > .erroriniciarsesion {
+            font-size: 20px;
+            color: red;
+            font-family: 'Segoe UI Historic';
+            margin-top: 10px;
+        }
+
+        .FormularioGeneral > .Forminiciarsesion > .BotonIniciarSesion {
+            font-family: 'Comic Sans MS';
+            font-size: 25px;
+            background-color: transparent;
+            border: hidden;
+            width: 100px;
+            height: 100px;
+        }
+/*FIN DE INICIAR SESION*/
