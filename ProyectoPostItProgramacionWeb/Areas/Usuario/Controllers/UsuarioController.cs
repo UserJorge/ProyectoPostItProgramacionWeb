@@ -35,17 +35,6 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
             await HttpContext.SignOutAsync();
             return Redirect("~/");
         }
-        [Authorize]
-        [HttpPost("Usuario/Eliminar/")]
-        public IActionResult EliminarUsuario(Models.Usuario usuario)
-        {
-            var user = Context.Usuario.FirstOrDefault(X => X.Nombre == usuario.Nombre);
-            if (user!=null)
-            {
-                Context.Remove(user);
-                Context.SaveChanges();
-            }
-            return RedirectToAction("Index");
-        }
+       
     }
 }
