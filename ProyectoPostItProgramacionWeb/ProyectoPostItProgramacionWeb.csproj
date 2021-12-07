@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Usuario\Models\" />
-    <Folder Include="Areas\Usuario\Views\Shared\" />
     <Folder Include="wwwroot\audios\" />
   </ItemGroup>
 
