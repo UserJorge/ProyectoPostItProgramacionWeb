@@ -8,8 +8,8 @@
     <form class="FormEditarMazo" method="post" action="~/Usuario/Usuario/EditarMazo">
         <p>Nombre del título</p>
         <input type="text" asp-for="Id" hidden />
-        <input type="text" asp-for="Titulo" />
+        <input class="TituloEditarMazo" type="text" asp-for="Titulo" />
         <p id="error">@Html.ValidationSummary()</p>
-        <input class="BotonEditarMazo"  type="submit" value="Guardar"/>
+        <input class="BotonEditarMazo" type="submit" value="Guardar"/>
     </form>
 </div>

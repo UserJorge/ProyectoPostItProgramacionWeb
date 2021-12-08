@@ -4,11 +4,12 @@
 @{
     Layout = "_AdmLayout";
 }
-<h2>Bienvenido @User.Identity.Name</h2>
+<h2 class="Bienvenido">Bienvenido @User.Identity.Name</h2><br />
+
 <p id="error">@Html.ValidationSummary()</p>
 <form method="post" action="~/Usuario/Home/Index/">
-    <select asp-items="@(new SelectList(Model.Mazos,"Id","Titulo"))" asp-for="Mazo" onchange="this.form.submit()"></select>
-</form>
+    <select asp-items="@(new SelectList(Model.Mazos,"Id","Titulo"))" asp-for="Mazo" onchange="this.form.submit()"></select><br />
+</form><br />
 
         @foreach (var nota in Model.Notas) 
         { 

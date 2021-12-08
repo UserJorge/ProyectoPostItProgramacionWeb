@@ -8,8 +8,8 @@
     <form class="FormAgregarMazo" method="post" action="~/Usuario/Usuario/AgregarMazo/" enctype="multipart/form-data">
         
         <p>Nombre del título</p>
-        <input type="text" class="tituloagregarnota" asp-for="Titulo" />
+        <input class="TituloAgregarMazo" type="text"  asp-for="Titulo" />
         <p id="error">@Html.ValidationSummary()</p>
-        <input class="BotonAgregarNota" type="submit" value="Enviar &#x2b9a;" />
+        <input class="BotonAgregarMazo" type="submit" value="Agregar Mazo &#x2b9a;" />
     </form>
 </div>
