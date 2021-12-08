@@ -305,10 +305,13 @@ main { /*Notas*/
         height: 170px;
         width: 650px;
         border-radius: 15px;
-    }/*Boton de eliminar */
+        color: white;
+    }
+        /*Boton de eliminar */
         .FormularioGeneral > .FormEliminar > .botonEliminarNota {
             font-size: 30px;
             background-color: #a30000dd;
+            color:white;
             align-content: center;
             font-family: 'Comic Sans MS';
             border-radius: 2px;
@@ -360,9 +363,53 @@ main { /*Notas*/
         .FormularioGeneral > .Forminiciarsesion > .BotonIniciarSesion {
             font-family: 'Comic Sans MS';
             font-size: 25px;
-            background-color: transparent;
+            background: linear-gradient(45deg, #00f1a5,#00deb8, #00cfc6, #00bfd5, #00b0e4);
             border: hidden;
-            width: 100px;
-            height: 100px;
+            width: 200px;
+            height: 40px;
+            margin-top:50px;
+            border: medium;
+            font-weight: bold;
         }
-/*FIN DE INICIAR SESION*/
+    /*FIN DE INICIAR SESION*/
+    /*REGISTRAR*/
+    .FormularioGeneral > .FormRegistrar {
+        background-color: white;
+        background-color: #ffffffDD;
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+        font-size: 30px;
+        height: 350px;
+        width: 450px;
+        border-radius: 15px;
+        border-style: solid;
+        border-color: lightgray;
+    }
+        .FormularioGeneral > .FormRegistrar > .nombreRegistrarUsuario {
+            height: 30px;
+            width: 250px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-family: 'Comic Sans MS';
+            background-color: #e9f0fd;
+            BORDER: 1px solid #dddfe2;
+        }
+        .FormularioGeneral > .FormRegistrar > .contraseñaRegistrarUsuario {
+            height: 30px;
+            width: 250px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-family: 'Comic Sans MS';
+        }
+        .FormularioGeneral > .FormRegistrar > .botonRegistrar {
+            background: linear-gradient(45deg, #aa6bb4,#9169bf, #7869c2, #5c69d2, #5573cb);
+            color: white;
+            width: 200px;
+            height: 40px;
+            border: none;
+            font-size: 18px;
+            margin-top: 50px;
+            font-weight: bold;
+            font-family: 'Comic Sans MS';
+        }
