@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ProyectoPostItProgramacionWeb.Areas.Usuario.ViewModels;
 using ProyectoPostItProgramacionWeb.Models;
 using ProyectoPostItProgramacionWeb.ViewModels;
 using System;
@@ -32,7 +33,21 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
         public IActionResult Index()
         {
             var notas =(IEnumerable<Nota>) Context.Nota.Include(x => x.IdMazoNavigation).ThenInclude(x => x.IdUsuarioNavigation).Select(x => x).Where(x => x.IdMazoNavigation.IdUsuarioNavigation.Nombre == User.Identity.Name).ToList();
-            return View(notas);
+            var mazos = (IEnumerable<Mazo>)Context.Mazo.Include(x => x.IdUsuarioNavigation).Select(x => x).Where(x => x.IdUsuarioNavigation.Nombre == User.Identity.Name).ToList();
+            NotasDelMazoViewModel vm = new();
+            vm.Notas = notas;
+            vm.Mazos = mazos;
+            return View(vm);
+        }
+        [HttpPost("Usuario/Home/Index/")]
+        public IActionResult Index(ViewModels.NotasDelMazoViewModel vmprop)
+        {
+            var notas = (IEnumerable<Nota>)Context.Nota.Include(x => x.IdMazoNavigation).ThenInclude(x => x.IdUsuarioNavigation).Select(x => x).Where(x => x.IdMazoNavigation.IdUsuarioNavigation.Nombre == User.Identity.Name &&x.IdMazo==vmprop.Mazo).ToList();
+            var mazos = (IEnumerable<Mazo>)Context.Mazo.Include(x => x.IdUsuarioNavigation).Select(x => x).Where(x => x.IdUsuarioNavigation.Nombre == User.Identity.Name).ToList();
+            NotasDelMazoViewModel vm = new();
+            vm.Notas = notas;
+            vm.Mazos = mazos;
+            return View(vm);
         }
         [Route("Usuario/PostIt/Agregar/")]
         [Authorize]

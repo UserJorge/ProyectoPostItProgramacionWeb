@@ -28,7 +28,7 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
       
         public IActionResult Index()
         {
-            var mazos =(IEnumerable<ProyectoPostItProgramacionWeb.Models.Mazo>)Context.Mazo.Include(x => x.IdUsuarioNavigation).Select(x => x).Where(x => x.IdUsuarioNavigation.Nombre == User.Identity.Name).ToList();
+            var mazos=(IEnumerable<ProyectoPostItProgramacionWeb.Models.Mazo>)Context.Mazo.Include(x => x.IdUsuarioNavigation).Select(x => x).Where(x => x.IdUsuarioNavigation.Nombre == User.Identity.Name).ToList();
             return View(mazos);
         }
         [HttpGet("Usuario/Usuario/AgregarMazo")]
@@ -54,10 +54,11 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
 
             return RedirectToAction("Index");
         }
-        [HttpGet("Usuario/Usuario/EditarMazo")]
-        public IActionResult EditarMazo()
+        [HttpGet("Usuario/Usuario/EditarMazo/{id}")]
+        public IActionResult EditarMazo(int id)
         {
-            return View();
+            var mazo = Context.Mazo.FirstOrDefault(x => x.Id == id);
+            return View(mazo);
         }
         [HttpPost("Usuario/Usuario/EditarMazo")]
         public IActionResult EditarMazo(Models.Mazo mazo)
@@ -66,41 +67,45 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
             //Ubicar el usuario
             //En que mazo lo vamos a editar
             if (mazo!=null)
-            {             
-                Context.Mazo.Update(mazo);
-                Context.SaveChanges();
+            {
+                if (!Context.Nota.Include(x=>x.IdMazoNavigation).Any(x=>x.IdMazo==mazo.Id))
+                {
+                    mazo.IdUsuario = Context.Mazo.Include(x => x.IdUsuarioNavigation).FirstOrDefault(x => x.IdUsuarioNavigation.Nombre == User.Identity.Name).IdUsuario;
+                    Context.Mazo.Update(mazo);
+                    Context.SaveChanges();
+                }
+                else
+                {
+                    ModelState.AddModelError("", "No se puede modificar un mazo que tiene notas");
+                    return View(mazo);
+                }             
             }
-            
-            return View();
+            else
+            {
+                ModelState.AddModelError("", "No debe estar vacía la información del mazo");
+                return View(mazo);
+            }
+            return RedirectToAction("Index");
         }
-        [HttpGet("Usuario/Usuario/EliminarMazo")]
-        public IActionResult EliminarMazo()
+        [HttpGet("Usuario/Usuario/EliminarMazo/{id}")]
+        public IActionResult EliminarMazo(int id)
         {
-            return View();
+            var mazo = Context.Mazo.FirstOrDefault(x => x.Id == id);
+            return View(mazo);
         }
-        [HttpPost("Usuario/Usuario/EliminarMazo")]
+        [HttpPost("Usuario/Usuario/EliminarMazo/")]
         public IActionResult EliminarMazo(Models.Mazo mazo)
-        {
-            if (mazo == null)
-            {
-                ModelState.AddModelError("", "El mazo no puede ser eliminado por que no existe");
-                return View(mazo);
-            }
-            if (string.IsNullOrWhiteSpace(mazo.Titulo))
-            {
-                ModelState.AddModelError("", "El mazo no puede ser eliminado por que no existe");
-                return View(mazo);
-            }          
-            var mazodb = Context.Mazo.FirstOrDefault(x => x.Titulo == mazo.Titulo);
+        {                 
+            var mazodb = Context.Mazo.FirstOrDefault(x => x.Id==mazo.Id);
             if (mazodb!=null)
             {
                 ModelState.AddModelError("", "El mazo no puede ser eliminado por que no existe o no se encuentra");
-                return View(mazo);
+                return RedirectToAction("Index");
             }
             if (Context.Nota.Include(x=>x.IdMazoNavigation).Any(x=>x.IdMazo==mazodb.Id))
             {
                 ModelState.AddModelError("", "No se puede eliminar un mazo que tiene notas");
-                return View(mazo);
+                return RedirectToAction("Index");
             }
             Context.Remove(mazodb);
             Context.SaveChanges();
