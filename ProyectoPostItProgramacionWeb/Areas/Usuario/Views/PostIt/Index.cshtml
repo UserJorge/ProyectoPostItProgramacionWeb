@@ -4,28 +4,36 @@
 @{
     Layout = "_AdmLayout";
 }
-<h2>Bienvenido @User.Identity.Name</h2>
-<p id="error">@Html.ValidationSummary()</p>
-<form method="post" action="~/Usuario/Home/Index/">
-    <select asp-items="@(new SelectList(Model.Mazos,"Id","Titulo"))" asp-for="Mazo" onchange="this.form.submit()"></select>
-</form>
+<div>
+    <div>
+        <h2 class="Bienvenido">Bienvenido @User.Identity.Name</h2>
 
-        @foreach (var nota in Model.Notas) 
-        { 
-            <div class="contenedorNota">
-        <a href="~/Usuario/PostIt/Editar/@nota.Titulo.Replace(" ","-")"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
-        <a href="~/Usuario/PostIt/Eliminar/@nota.Titulo.Replace(" ","-")"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
-        <p class="tituloMazo" name="Titulo">@nota.Titulo</p>
-        <p class="contenidoNota" name="Contenido">
-            @nota.Descripcion
-        </p>
-        @if (System.IO.File.Exists($"{env.WebRootPath}/audios/{nota.Id}_Audio.mp3"))
-        {
-            <audio controls>
-                <source src="~/audios/@(nota.Id)_Audio.mp3" type="audio/mp3">
-                Your browser does not support the audio element.
-            </audio>
-        }
-
+        <p id="error">@Html.ValidationSummary()</p>
+        <form class="FormBienvenidoUsuario" method="post" action="~/Usuario/Home/Index/">
+            <select style="font-size:25px" asp-items="@(new SelectList(Model.Mazos,"Id","Titulo"))" asp-for="Mazo" onchange="this.form.submit()"></select>
+        </form>
     </div>
-}
+
+    @foreach (var nota in Model.Notas)
+    {
+        <div class="contenedorNota">
+
+            <a href="~/Usuario/PostIt/Editar/@nota.Titulo.Replace(" ","-")"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
+            <a href="~/Usuario/PostIt/Eliminar/@nota.Titulo.Replace(" ","-")"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
+            <p class="tituloMazo" name="Titulo">@nota.Titulo</p>
+            <p class="contenidoNota" name="Contenido">
+                @nota.Descripcion
+            </p>
+            @if (System.IO.File.Exists($"{env.WebRootPath}/audios/{nota.Id}_Audio.mp3"))
+            {
+                <audio controls>
+                    <source src="~/audios/@(nota.Id)_Audio.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            }
+
+        </div>
+
+    }
+
+</div>
