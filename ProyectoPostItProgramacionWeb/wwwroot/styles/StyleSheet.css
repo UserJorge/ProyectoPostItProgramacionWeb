@@ -20,9 +20,7 @@ header > i {
     color: white;
 }
 
-Bienvenidoh2 {
-    color: white;
-}
+
 
 a {
     text-decoration: none;
@@ -37,11 +35,13 @@ p {
     font-size: 28px;
 }
 /*BIENVENIDO AL USUARIO*/
-.Bienvenido{
-    color: aqua;
-    margin-left:500px;
-    font-family:'Comic Sans MS';
-
+.Bienvenido {
+    color: #c30515;
+    font-family: 'Agency FB';
+    font-size:80px;
+}
+.FormBienvenidoUsuario {
+    
 }
 
 header {

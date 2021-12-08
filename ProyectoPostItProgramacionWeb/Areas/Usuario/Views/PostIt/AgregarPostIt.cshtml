@@ -6,7 +6,7 @@
 <div class="FormularioGeneral">
     <p class="TituloFormulario">Agregar una nota</p>
     <form class="cuadroagregarnota" method="post" action="~/Usuario/PostIt/Agregar/" enctype="multipart/form-data">
-        <select class="seleccionaragregarnota" asp-items="@(new SelectList(Model.Mazos,"Id","Titulo"))" asp-for="Nota.IdMazo">           
+        <select style="width:auto; font-size:25px"  class="seleccionaragregarnota" asp-items="@(new SelectList(Model.Mazos,"Id","Titulo"))" asp-for="Nota.IdMazo">           
         </select>
         <p>Nombre del título</p>
         <input class="tituloagregarnota" type="text" asp-for="Nota.Titulo" />
