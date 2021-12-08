@@ -34,6 +34,16 @@ namespace ProyectoPostItProgramacionWeb.Controllers
         [HttpPost("Usuario/Registrarse/")]
         public IActionResult RegistrarUsuario(Usuario usuario)
         {
+            if (string.IsNullOrWhiteSpace(usuario.Nombre))
+            {
+                ModelState.AddModelError("", "El nombre no puede dejarse en blanco");
+                return View(usuario);
+            }
+            if (string.IsNullOrWhiteSpace(usuario.Password))
+            {
+                ModelState.AddModelError("", "La contraseña no puede dejarse en blanco");
+                return View(usuario);
+            }
             if (Context.Usuario.Any(x=>x.Nombre==usuario.Nombre))
             {
                 ModelState.AddModelError("", "No se puede registrar debido a un conflicto de registros");
