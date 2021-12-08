@@ -4,11 +4,10 @@
     Layout = "_AdmLayout";
 }
 <div class="FormularioGeneral">
-    <p class="TituloFormulario">Editar mazo</p>
-    <form method="post" action="~/Usuario/Usuario/EditarMazo">
-        <p>Nombre del título</p>
+    <p class="TituloFormulario">Eliminar una nota</p>
+    <form method="get" action="~/Usuario/PostIt/Eliminar/">
         <input type="text" asp-for="Id" hidden />
-        <input type="text" asp-for="Titulo" />
+        <p>¿Desea eliminar&nbsp; @Model.Titulo?</p>
         <p id="error">@Html.ValidationSummary()</p>
         <input type="submit" />
     </form>

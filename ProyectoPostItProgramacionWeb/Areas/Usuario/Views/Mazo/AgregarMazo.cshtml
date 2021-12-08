@@ -9,6 +9,7 @@
         <p>Seleccionar un Mazo</p>
         <p>Nombre del título</p>
         <input type="text" class="tituloagregarnota" asp-for="Titulo" />
+        <p id="error">@Html.ValidationSummary()</p>
         <input class="BotonAgregarNota" type="submit" value="Enviar &#x2b9a;" />
     </form>
 </div>
