@@ -5,10 +5,10 @@
 }
 <div class="FormularioGeneral">
     <p class="TituloFormulario">Editar mazo</p>
-    <form method="post" action="~/Usuario/Usuario/EditarMazo">
+    <form class="FormEditarMazo" method="post" action="~/Usuario/Usuario/EditarMazo">
         <p>Nombre del título</p>
-        <input type="text" asp-for="Titulo" readonly />
+        <input class="TituloEditarMazo" type="text" asp-for="Titulo" readonly />
         <p id="error">@Html.ValidationSummary()</p>
-        <input type="submit" />
+        <input class="BotonEditarMazo"  type="submit" value="Guardar"/>
     </form>
 </div>

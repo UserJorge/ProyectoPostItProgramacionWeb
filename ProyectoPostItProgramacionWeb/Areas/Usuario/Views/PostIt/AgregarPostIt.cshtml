@@ -5,15 +5,15 @@
 }
 <div class="FormularioGeneral">
     <p class="TituloFormulario">Agregar una nota</p>
-    <form method="post" action="~/Usuario/PostIt/Agregar/" enctype="multipart/form-data">
-        <select asp-items="@(new SelectList(Model.Mazos,"Id","Titulo"))" asp-for="Nota.IdMazo">           
+    <form class="cuadroagregarnota" method="post" action="~/Usuario/PostIt/Agregar/" enctype="multipart/form-data">
+        <select class="seleccionaragregarnota" asp-items="@(new SelectList(Model.Mazos,"Id","Titulo"))" asp-for="Nota.IdMazo">           
         </select>
         <p>Nombre del título</p>
-        <input type="text" asp-for="Nota.Titulo" />
+        <input class="tituloagregarnota" type="text" asp-for="Nota.Titulo" />
         <p>Descripción</p>
-        <input type="text" asp-for="Nota.Descripcion" /><br />
-        <input type="file" accept="audio/mp3" asp-for="Audio" id="fileUpdate" />
-        <p id="error">@Html.ValidationSummary()</p>
-        <input type="submit" />
+        <input class="descripcionagregarnota" type="text" asp-for="Nota.Descripcion" /><br />
+        <input class="audioagregarnota" type="file" accept="audio/mp3" asp-for="Audio" id="fileUpdate" />
+        <p class="botonerror" id="error">@Html.ValidationSummary() </p>
+        <input class="BotonAgregarNota" type="submit" value="Agregar "/>
     </form>
 </div>

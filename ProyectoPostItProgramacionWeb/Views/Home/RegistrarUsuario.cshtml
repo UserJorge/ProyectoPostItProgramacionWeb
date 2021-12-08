@@ -10,8 +10,8 @@
         <p>Nombre de usuario</p>
         <input class="nombreRegistrarUsuario" type="text" asp-for="Nombre" /><br />
         <p>Contraseña</p>
-        <input type="password"  asp-for="Password"/><br />
+        <input class="contraseñaRegistrarUsuario" type="password"  asp-for="Password"/><br />
         <p id="error">@Html.ValidationSummary()</p>
-        <input type="submit" />
+        <input class="botonRegistrar" type="submit" value="Registrar" />
     </form>
 </div>
