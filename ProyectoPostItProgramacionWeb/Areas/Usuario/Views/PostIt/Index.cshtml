@@ -1,13 +1,18 @@
-﻿@model IEnumerable<ProyectoPostItProgramacionWeb.Models.Nota>
+﻿@model ProyectoPostItProgramacionWeb.Areas.Usuario.ViewModels.NotasDelMazoViewModel
 @inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment env
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "_AdmLayout";
 }
 <h2>Bienvenido @User.Identity.Name</h2>
 <p id="error">@Html.ValidationSummary()</p>
-@foreach (var nota in Model)
-{
-    <div class="contenedorNota">
+<form method="post" action="~/Usuario/Home/Index/">
+    <select asp-items="@(new SelectList(Model.Mazos,"Id","Titulo"))" asp-for="Mazo" onchange="this.form.submit()"></select>
+</form>
+
+        @foreach (var nota in Model.Notas) 
+        { 
+            <div class="contenedorNota">
         <a href="~/Usuario/PostIt/Editar/@nota.Titulo.Replace(" ","-")"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
         <a href="~/Usuario/PostIt/Eliminar/@nota.Titulo.Replace(" ","-")"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
         <p class="tituloMazo" name="Titulo">@nota.Titulo</p>
