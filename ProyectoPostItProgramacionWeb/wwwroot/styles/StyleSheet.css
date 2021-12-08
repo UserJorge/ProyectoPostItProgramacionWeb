@@ -63,13 +63,13 @@ header {
         flex-wrap: wrap;
         align-content: center;
         list-style-type: none;
-        margin: 5px;
+        
         font-size: 15px;
         width: 100%;
     }
 
         header ul li /*Apartado de adentro* del encabezado post it*/ {
-            width: 10vw;
+            width: 15vw;
             text-align: center;
             list-style: none;
             font-size: 27px;

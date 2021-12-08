@@ -1,0 +1,14 @@
+﻿@model ProyectoPostItProgramacionWeb.Models.Mazo
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_AdmLayout";
+}
+<div class="FormularioGeneral">
+    <p class="TituloFormulario">Editar mazo</p>
+    <form method="post" action="~/Usuario/Usuario/EditarMazo">
+        <p>Nombre del título</p>
+        <input type="text" asp-for="Titulo" readonly />
+        <p id="error">@Html.ValidationSummary()</p>
+        <input type="submit" />
+    </form>
+</div>

@@ -31,7 +31,7 @@ namespace ProyectoPostItProgramacionWeb
                     Options.Cookie.Name = "SesionNota";
                 }
                 );
-            services.AddDbContext<postitdbContext>(option => option.UseMySql("server=localhost;user=root;password=2700;database=postitdb", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.12-mysql")));
+            services.AddDbContext<postitdbContext>(option => option.UseMySql("server=localhost;user=root;password=_M0r3nR0TLMR?;database=postitdb", Microsoft.EntityFrameworkCore.ServerVersion.Parse("5.7.33-mysql")));
             services.AddMvc();
         }
 

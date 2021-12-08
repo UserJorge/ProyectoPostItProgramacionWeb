@@ -4,11 +4,12 @@
     Layout = "_AdmLayout";
 }
 <h2>Bienvenido @User.Identity.Name</h2>
+<p id="error">@Html.ValidationSummary()</p>
 @foreach (var nota in Model)
 {
     <div class="contenedorNota">
-        <a href="~/Notas/Editar/@nota.Titulo.Replace(" ","-")"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
-        <a href="~/Notas/Eliminar/@nota.Titulo.Replace(" ","-")"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
+        <a href="~/Usuario/PostIt/Editar/@nota.Titulo.Replace(" ","-")"><i class="fas fa-pen" style="color:black;text-align:end;"></i></a>
+        <a href="~/Usuario/PostIt/Eliminar/@nota.Titulo.Replace(" ","-")"><i class="fas fa-trash" style="color:black; text-align:end;"></i></a>
         <p class="tituloMazo" name="Titulo">@nota.Titulo</p>
         <p class="contenidoNota" name="Contenido">
             @nota.Descripcion

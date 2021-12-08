@@ -24,7 +24,7 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
         [HttpGet("Usuario/Usuario/Index")]
         [Authorize]
         public IActionResult Index()
-        {
+        { 
             var usuarios =(IEnumerable<ProyectoPostItProgramacionWeb.Models.Usuario>) Context.Usuario.Select(x => x).Where(x => x.Nombre != "admin").ToList();
             return View(usuarios);
         }

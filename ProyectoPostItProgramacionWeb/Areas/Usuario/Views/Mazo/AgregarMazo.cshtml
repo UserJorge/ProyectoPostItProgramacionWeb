@@ -1,0 +1,14 @@
+﻿@model ProyectoPostItProgramacionWeb.Models.Mazo
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_AdmLayout";
+}
+<div class="FormularioGeneral">
+    <p class="TituloFormulario">Agregar una mazo</p>
+    <form class="cuadroagregarnota" method="post" action="~/Usuario/Usuario/AgregarMazo/" enctype="multipart/form-data">
+        <p>Seleccionar un Mazo</p>
+        <p>Nombre del título</p>
+        <input type="text" class="tituloagregarnota" asp-for="Titulo" />
+        <input class="BotonAgregarNota" type="submit" value="Enviar &#x2b9a;" />
+    </form>
+</div>

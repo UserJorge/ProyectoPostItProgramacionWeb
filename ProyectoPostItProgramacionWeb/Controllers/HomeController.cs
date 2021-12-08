@@ -34,6 +34,11 @@ namespace ProyectoPostItProgramacionWeb.Controllers
         [HttpPost("Usuario/Registrarse/")]
         public IActionResult RegistrarUsuario(Usuario usuario)
         {
+            if (Context.Usuario.Any(x=>x.Nombre==usuario.Nombre))
+            {
+                ModelState.AddModelError("", "No se puede registrar debido a un conflicto de registros");
+                return View(usuario);
+            }
             usuario.Password = Cifrado.GetHash(usuario.Password);
             Context.Add(usuario);
             Context.SaveChanges();
