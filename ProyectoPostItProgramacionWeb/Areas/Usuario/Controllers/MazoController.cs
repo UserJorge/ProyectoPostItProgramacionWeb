@@ -39,6 +39,11 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
         [HttpPost("Usuario/Usuario/AgregarMazo")]
         public IActionResult AgregarMazo(ProyectoPostItProgramacionWeb.Models.Mazo mazo)
         {
+            if (string.IsNullOrWhiteSpace(mazo.Titulo))
+            {
+                ModelState.AddModelError("", "El titulo no puede estar vacío");
+                return View(mazo);
+            }
             if (Context.Mazo.Any(x => x.Titulo == mazo.Titulo))
             {
                 ModelState.AddModelError("", "No se puede crear otro mazo con el mismo titulo");
