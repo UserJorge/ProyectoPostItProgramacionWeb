@@ -7,7 +7,7 @@
     <p class="TituloFormulario">Agregar una mazo</p>
     <form class="FormAgregarMazo" method="post" action="~/Usuario/Usuario/AgregarMazo/" enctype="multipart/form-data">
         
-        <p>Nombre del título</p>
+        <p>Añade el nombre</p>
         <input class="TituloAgregarMazo" type="text"  asp-for="Titulo" />
         <p id="error">@Html.ValidationSummary()</p>
         <input class="BotonAgregarMazo" type="submit" value="Agregar Mazo &#x2b9a;" />

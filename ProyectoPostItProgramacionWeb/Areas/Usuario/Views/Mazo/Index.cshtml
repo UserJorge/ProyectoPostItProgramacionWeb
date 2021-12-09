@@ -3,7 +3,7 @@
     @{
         Layout = "_AdmLayout";
     }
-    <h2 class="Bienvenidoh2">Bienvenido @User.Identity.Name</h2>
+    <h2 style="width: 100vw; background-color: #fafafadd" class="Bienvenido">Bienvenido a tu lista de Mazos, @User.Identity.Name</h2>
     @foreach (var mazo in Model)
     {
         <div class="contenedorNota">

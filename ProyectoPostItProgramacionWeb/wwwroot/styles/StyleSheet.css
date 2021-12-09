@@ -37,18 +37,20 @@ p {
 /*BIENVENIDO AL USUARIO*/
 .Bienvenido {
     color: #c30515;
-    font-family: 'Agency FB';
+    font-family: CursiveNote;
     font-size:80px;
+    height:0 auto;
 }
-.FormBienvenidoUsuario {
-    
+.divBienvenido {
+    width: 100vw;
+    background-color: #fafafadd
 }
 
 header {
     display: flex;
     align-content: space-between;
     height: 10vh;
-    width: 100vw;
+    width: 99vw;
     background: linear-gradient(45deg, #DB7093,#C71585, #FF1493, #FF69B4, #FFB6C1, #FFC0CB);
 }
 
@@ -111,6 +113,7 @@ footer {
     position: fixed;
     bottom: 0;
     text-align: center;
+    background-color:#00000033;
 }
 
 main { /*Notas*/
@@ -118,7 +121,7 @@ main { /*Notas*/
     flex-wrap: wrap;
     justify-content: center;
     flex-direction:row;
-    height: 120vh;
+    height: auto;
     /*width: 100vw;*/
        overflow:hidden;
    /*width:100%;
@@ -476,10 +479,11 @@ main { /*Notas*/
         margin: 0 auto;
         display: block;
         text-align: center;
-        | font-size: 30px;
+        font-size: 30px;
         height: 300px;
         width: 500px;
         border-radius: 15px;
+        margin-top:10px;
     }
 
         .FormularioGeneral > .FormAgregarMazo .TituloAgregarMazo {
