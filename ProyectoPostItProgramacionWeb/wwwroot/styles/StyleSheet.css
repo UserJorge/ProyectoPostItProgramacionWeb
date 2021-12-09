@@ -121,7 +121,7 @@ main { /*Notas*/
     flex-wrap: wrap;
     justify-content: center;
     flex-direction:row;
-    height: auto;
+    height: 82vh;
     /*width: 100vw;*/
        overflow:hidden;
    /*width:100%;
