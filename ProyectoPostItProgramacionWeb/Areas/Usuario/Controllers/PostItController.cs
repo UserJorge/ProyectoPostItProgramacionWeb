@@ -69,7 +69,16 @@ namespace ProyectoPostItProgramacionWeb.Areas.Usuario.Controllers
         {
             vm.Nota.FechaCreacion = DateTime.Now;
             //si no hay un mazo no se puede agregar
-          
+            if (string.IsNullOrWhiteSpace(vm.Nota.Titulo))
+            {
+                ModelState.AddModelError("", "El título de la nota no debe estar vacía");
+                return View(vm);
+            }
+            if (string.IsNullOrWhiteSpace(vm.Nota.Descripcion))
+            {
+                ModelState.AddModelError("", "La descripción de la nota no debe estar vacía");
+                return View(vm);
+            }        
             if (!Context.Mazo.Include(x => x.IdUsuarioNavigation).Any(x => x.IdUsuario == Context.Usuario.FirstOrDefault(x => x.Nombre == User.Identity.Name).Id)) 
             {
                 ModelState.AddModelError("", "Porfavor cree un nuevo mazo, para agregar una nota");
